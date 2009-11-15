@@ -1,0 +1,21 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  distance: 1.5
+  hours: 1
+  minutes: 1
+  seconds: 1
+  duration: 1
+  avgspeed: 1.5
+  pace: 1.5
+  user_id: 1
+
+two:
+  distance: 1.5
+  hours: 1
+  minutes: 1
+  seconds: 1
+  duration: 1
+  avgspeed: 1.5
+  pace: 1.5
+  user_id: 1

@@ -1,0 +1,29 @@
+<p>
+  <b>Distance:</b>
+  <%=h @goal.distance %>
+</p>
+
+<p>
+  <b>Hours:</b>
+  <%=h @goal.hours %>
+</p>
+
+<p>
+  <b>Minutes:</b>
+  <%=h @goal.minutes %>
+</p>
+
+<p>
+  <b>Seconds:</b>
+  <%=h @goal.seconds %>
+</p>
+
+<p>
+  <b>Avgspeed:</b>
+  <%=h @goal.avgspeed %>
+</p>
+
+
+
+<%= link_to 'Edit', edit_goal_path(@goal) %> |
+<%= link_to 'Back', goals_path %>

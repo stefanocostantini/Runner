@@ -1,0 +1,35 @@
+<h1>Listing runs</h1>
+
+<table>
+  <tr>
+    <th>Distance</th>
+    <th>Hours</th>
+    <th>Minutes</th>
+    <th>Seconds</th>
+    <th>Avgspeed</th>
+    <th>User</th>
+  </tr>
+
+<% @runs.each do |run| %>
+  <tr>
+    <td><%=h run.distance %></td>
+    <td><%=h run.hours %></td>
+    <td><%=h run.minutes %></td>
+    <td><%=h run.seconds %></td>
+    <td><%=h run.avgspeed %></td>
+    <td><%= link_to 'Show', run %></td>
+    <td><%= link_to 'Edit', edit_run_path(run) %></td>
+    <td><%= link_to 'Destroy', run, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<h1>My goal</h1>
+<%= @goal.distance %>|
+<%= @goal.hours %>|
+<%= @goal.minutes %>|
+<%= @goal.seconds %>|
+
+<br />
+
+<%= link_to 'New run', new_run_path %>
