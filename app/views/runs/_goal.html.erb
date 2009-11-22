@@ -1,0 +1,19 @@
+<table>
+  <tr>
+    <th>Distance</th>
+    <th>Hours</th>
+    <th>Minutes</th>
+    <th>Seconds</th>
+    <th>Average speed</th>
+  </tr>
+  
+  <tr>
+  	<th><%= in_place_editor_field :goal, :distance, :controller => 'goals' %></th>
+  	<th><%= in_place_editor_field :goal, :hours %></th>
+  	<th><%= in_place_editor_field :goal, :minutes %></th>
+  	<th><%= in_place_editor_field :goal, :seconds %></th>
+  	<th><%= @goal.avgspeed %> km/h</th>
+
+  </tr>
+  
+

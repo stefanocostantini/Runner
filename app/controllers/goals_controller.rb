@@ -1,5 +1,10 @@
 class GoalsController < ApplicationController
 
+in_place_edit_for :goal, :distance
+in_place_edit_for :goal, :hours
+in_place_edit_for :goal, :minutes
+in_place_edit_for :goal, :seconds
+
 before_filter :login_required
 
   # GET /goals

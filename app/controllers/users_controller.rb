@@ -24,6 +24,8 @@ class UsersController < ApplicationController
     		@goal.hours = 0
     		@goal.minutes = 0
     		@goal.seconds = 0
+    		@goal.duration = 0
+    		@goal.avgspeed = 0
     		@goal.save 
      
     else

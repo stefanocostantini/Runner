@@ -1,0 +1,8 @@
+<div class="run"> 
+    <%=h run.distance %>|
+    <%=h run.hours %>|
+    <%=h run.minutes %>|
+    <%=h run.seconds %>|
+    <%=h run.avgspeed %> km/h|
+    <%= link_to_remote 'Delete', :url => { :controller => 'runs', :action => 'delete', :id => run.id } %></td>
+</div>

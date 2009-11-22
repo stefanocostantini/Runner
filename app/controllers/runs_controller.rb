@@ -1,5 +1,10 @@
 class RunsController < ApplicationController
 
+in_place_edit_for :run, :distance
+in_place_edit_for :run, :hours
+in_place_edit_for :run, :minutes
+in_place_edit_for :run, :seconds
+
 before_filter :login_required
 
   # GET /runs
@@ -45,38 +50,35 @@ before_filter :login_required
   # POST /runs.xml
   def create
     @run = current_user.runs.new(params[:run])
-    
     @run.duration = @run.hours*3600 + @run.minutes*60 + @run.seconds 
-    
     @run.avgspeed = ((@run.distance/@run.duration)*3600).round(1)
+    @run.save 
+    @runs = current_user.runs.all 
     
-    @run.pace_minutes = ((@run.duration/60)/@run.distance)
-    
-  	pace_in_decimal = ((@run.duration/60)/@run.distance)
-  	
-  	seconds_in_decimal = ((@run.duration/60)/@run.distance) - @run.pace_minutes
-  	
-  	@run.pace_seconds = seconds_in_decimal * 60
-
-    respond_to do |format|
-      if @run.save
-        flash[:notice] = 'Run was successfully created.'
-        format.html { redirect_to(@run) }
-        format.xml  { render :xml => @run, :status => :created, :location => @run }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @run.errors, :status => :unprocessable_entity }
-      end
-    end
+    # respond_to do |format|
+    #  if @run.save
+    #    flash[:notice] = 'Run was successfully created.'
+    #    format.html { redirect_to(@run) }
+    #    format.xml  { render :xml => @run, :status => :created, :location => @run }
+    #  else
+    #    format.html { render :action => "new" }
+    #    format.xml  { render :xml => @run.errors, :status => :unprocessable_entity }
+    #  end
+    # end
+  
   end
 
   # PUT /runs/1
   # PUT /runs/1.xml
   def update
     @run = current_user.runs.find(params[:id])
+    
+    @run.duration = @run.hours*3600 + @run.minutes*60 + @run.seconds 
+    
+    @run.avgspeed = ((@run.distance/@run.duration)*3600).round(1)
 
     respond_to do |format|
-      if @run.update_attributes(params[:run])
+      if @run.save
         flash[:notice] = 'Run was successfully updated.'
         format.html { redirect_to(@run) }
         format.xml  { head :ok }
@@ -92,10 +94,61 @@ before_filter :login_required
   def destroy
     @run = current_user.runs.find(params[:id])
     @run.destroy
+    @runs = current_user.runs.all 
 
-    respond_to do |format|
-      format.html { redirect_to(runs_url) }
-      format.xml  { head :ok }
-    end
+   # respond_to do |format|
+   #  format.html { redirect_to(runs_url) }
+   #   format.xml  { head :ok }
+   # end
   end
+  
+  def set_goal_distance
+  	@goal = current_user.goals.first
+	@goal.distance = params[:value]
+	@goal.duration = @goal.hours*3600 + @goal.minutes*60 + @goal.seconds 
+    @goal.avgspeed = ((@goal.distance/@goal.duration)*3600).round(1)
+	@goal.save
+	@runs = current_user.runs.all
+    @goal = current_user.goals.first
+  end
+  
+  def set_goal_hours
+  	@goal = current_user.goals.first
+	@goal.hours = params[:value]
+	@goal.duration = @goal.hours*3600 + @goal.minutes*60 + @goal.seconds 
+    @goal.avgspeed = ((@goal.distance/@goal.duration)*3600).round(1)
+	@goal.save
+	@runs = current_user.runs.all
+    @goal = current_user.goals.first
+  end
+  
+  def set_goal_minutes
+  	@goal = current_user.goals.first
+	@goal.minutes = params[:value]
+	@goal.duration = @goal.hours*3600 + @goal.minutes*60 + @goal.seconds 
+    @goal.avgspeed = ((@goal.distance/@goal.duration)*3600).round(1)
+	@goal.save
+	@runs = current_user.runs.all
+    @goal = current_user.goals.first
+  end
+  
+  def set_goal_seconds
+  	@goal = current_user.goals.first
+	@goal.seconds = params[:value]
+	@goal.duration = @goal.hours*3600 + @goal.minutes*60 + @goal.seconds 
+    @goal.avgspeed = ((@goal.distance/@goal.duration)*3600).round(1)
+	@goal.save
+	@runs = current_user.runs.all
+    @goal = current_user.goals.first
+  end
+  
+  def delete
+  
+    @run = current_user.runs.find(params[:id])
+    @run.destroy
+    	
+ 	@runs = current_user.runs.all
+   
+  end 
+  
 end
