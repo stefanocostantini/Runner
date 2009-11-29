@@ -23,8 +23,8 @@ class UsersController < ApplicationController
        		@goal.distance = 0
     		@goal.hours = 0
     		@goal.minutes = 0
-    		@goal.seconds = 0
-    		@goal.duration = 0
+    		@goal.seconds = 1
+    		@goal.duration = @goal.hours*3600 + @goal.minutes*60 + @goal.seconds 
     		@goal.avgspeed = 0
     		@goal.save 
      

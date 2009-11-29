@@ -1,8 +1,9 @@
 <div class="run"> 
-    <%=h run.distance %>|
-    <%=h run.hours %>|
-    <%=h run.minutes %>|
-    <%=h run.seconds %>|
-    <%=h run.avgspeed %> km/h|
+    <%= run.distance %> (<%= run.distance_comparison %>%)
+    <%= run.hours %>|
+    <%= run.minutes %>|
+    <%= run.seconds %>
+    <%= run.avgspeed %> km/h (<%= run.avgspeed_comparison%>%)|
+    Total comparison: <%= run.total_comparison %>%
     <%= link_to_remote 'Delete', :url => { :controller => 'runs', :action => 'delete', :id => run.id } %></td>
 </div>

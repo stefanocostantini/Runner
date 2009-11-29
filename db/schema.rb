@@ -27,13 +27,15 @@ ActiveRecord::Schema.define(:version => 20091115175255) do
 
   create_table "runs", :force => true do |t|
     t.float    "distance"
+    t.float    "distance_comparison"
     t.integer  "hours"
     t.integer  "minutes"
     t.integer  "seconds"
-    t.integer  "duration"
+    t.float    "duration"
+    t.float    "duration_comparison"
     t.float    "avgspeed"
-    t.integer  "pace_minutes"
-    t.integer  "pace_seconds"
+    t.float    "avgspeed_comparison"
+    t.float    "total_comparison"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"

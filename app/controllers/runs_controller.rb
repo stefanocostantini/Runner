@@ -50,21 +50,29 @@ before_filter :login_required
   # POST /runs.xml
   def create
     @run = current_user.runs.new(params[:run])
+    @goal = current_user.goals.first
     @run.duration = @run.hours*3600 + @run.minutes*60 + @run.seconds 
     @run.avgspeed = ((@run.distance/@run.duration)*3600).round(1)
-    @run.save 
-    @runs = current_user.runs.all 
     
-    # respond_to do |format|
-    #  if @run.save
-    #    flash[:notice] = 'Run was successfully created.'
-    #    format.html { redirect_to(@run) }
-    #    format.xml  { render :xml => @run, :status => :created, :location => @run }
-    #  else
-    #    format.html { render :action => "new" }
-    #    format.xml  { render :xml => @run.errors, :status => :unprocessable_entity }
-    #  end
-    # end
+   
+    @run.distance_comparison = (((@run.distance-@goal.distance)/@goal.distance)*100).round(1)
+    #@run.duration_comparison = (((@run.duration-@goal.duration)/@goal.duration)*100).round(1)
+    @run.avgspeed_comparison = (((@run.avgspeed-@goal.avgspeed)/@goal.avgspeed)*100).round(1)
+    @run.total_comparison = ((@run.distance_comparison+@run.avgspeed_comparison)/2).round(1)
+    
+    @run.save 
+	@runs = current_user.runs.all 
+    
+    #respond_to do |format|
+     # if @run.save
+      # flash[:notice] = 'Run was successfully created.'
+      # format.html { redirect_to(@run) }
+      # format.xml  { render :xml => @run, :status => :created, :location => @run }
+      # else
+       # format.html { render :action => "new" }
+       # format.xml  { render :xml => @run.errors, :status => :unprocessable_entity }
+      #end
+    #end
   
   end
 
@@ -72,10 +80,15 @@ before_filter :login_required
   # PUT /runs/1.xml
   def update
     @run = current_user.runs.find(params[:id])
-    
+    @goal = current_user.goals.first
     @run.duration = @run.hours*3600 + @run.minutes*60 + @run.seconds 
     
     @run.avgspeed = ((@run.distance/@run.duration)*3600).round(1)
+    
+    @run.distance_comparison = (((@run.distance-@goal.distance)/@goal.distance)*100).round(1)
+    #@run.duration_comparison = (((@run.duration-@goal.duration)/@goal.duration)*100).round(1)
+    @run.avgspeed_comparison = (((@run.avgspeed-@goal.avgspeed)/@goal.avgspeed)*100).round(1)
+    @run.total_comparison = ((@run.distance_comparison+@run.avgspeed_comparison)/2).round(1)
 
     respond_to do |format|
       if @run.save
@@ -109,7 +122,15 @@ before_filter :login_required
     @goal.avgspeed = ((@goal.distance/@goal.duration)*3600).round(1)
 	@goal.save
 	@runs = current_user.runs.all
-    @goal = current_user.goals.first
+		for @run in @runs
+		    @run.distance_comparison = (((@run.distance-@goal.distance)/@goal.distance)*100).round(1)
+    		#@run.duration_comparison = (((@run.duration-@goal.duration)/@goal.duration)*100).round(1)
+    		@run.avgspeed_comparison = (((@run.avgspeed-@goal.avgspeed)/@goal.avgspeed)*100).round(1)
+    		@run.total_comparison = ((@run.distance_comparison+@run.avgspeed_comparison)/2).round(1)
+    		@run.save
+		end
+	@runs = current_user.runs.all
+	@goal = current_user.goals.first
   end
   
   def set_goal_hours
@@ -118,6 +139,14 @@ before_filter :login_required
 	@goal.duration = @goal.hours*3600 + @goal.minutes*60 + @goal.seconds 
     @goal.avgspeed = ((@goal.distance/@goal.duration)*3600).round(1)
 	@goal.save
+	@runs = current_user.runs.all
+		for @run in @runs
+		    @run.distance_comparison = (((@run.distance-@goal.distance)/@goal.distance)*100).round(1)
+    		#@run.duration_comparison = (((@run.duration-@goal.duration)/@goal.duration)*100).round(1)
+    		@run.avgspeed_comparison = (((@run.avgspeed-@goal.avgspeed)/@goal.avgspeed)*100).round(1)
+    		@run.total_comparison = ((@run.distance_comparison+@run.avgspeed_comparison)/2).round(1)
+    		@run.save
+		end
 	@runs = current_user.runs.all
     @goal = current_user.goals.first
   end
@@ -129,6 +158,14 @@ before_filter :login_required
     @goal.avgspeed = ((@goal.distance/@goal.duration)*3600).round(1)
 	@goal.save
 	@runs = current_user.runs.all
+		for @run in @runs
+		    @run.distance_comparison = (((@run.distance-@goal.distance)/@goal.distance)*100).round(1)
+    		#@run.duration_comparison = (((@run.duration-@goal.duration)/@goal.duration)*100).round(1)
+    		@run.avgspeed_comparison = (((@run.avgspeed-@goal.avgspeed)/@goal.avgspeed)*100).round(1)
+    		@run.total_comparison = ((@run.distance_comparison+@run.avgspeed_comparison)/2).round(1)
+    		@run.save
+		end
+	@runs = current_user.runs.all
     @goal = current_user.goals.first
   end
   
@@ -138,6 +175,14 @@ before_filter :login_required
 	@goal.duration = @goal.hours*3600 + @goal.minutes*60 + @goal.seconds 
     @goal.avgspeed = ((@goal.distance/@goal.duration)*3600).round(1)
 	@goal.save
+	@runs = current_user.runs.all
+		for @run in @runs
+		    @run.distance_comparison = (((@run.distance-@goal.distance)/@goal.distance)*100).round(1)
+    		#@run.duration_comparison = (((@run.duration-@goal.duration)/@goal.duration)*100).round(1)
+    		@run.avgspeed_comparison = (((@run.avgspeed-@goal.avgspeed)/@goal.avgspeed)*100).round(1)
+    		@run.total_comparison = ((@run.distance_comparison+@run.avgspeed_comparison)/2).round(1)
+    		@run.save
+		end
 	@runs = current_user.runs.all
     @goal = current_user.goals.first
   end
