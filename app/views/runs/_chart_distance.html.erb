@@ -1,0 +1,53 @@
+    <canvas id="chart_distance"></canvas>
+
+	<script type="text/javascript">
+		
+		onload = chart_distance();
+	
+ 		function chart_distance() {
+        
+		  <!-- first chart -->
+		  var g = new Bluff.Line('chart_distance', '450x300');
+          g.set_theme({
+          colors: ['red', 'blue'],
+          marker_color: 'black',
+          font_color: 'black',
+          background_colors: ['white', '#999999']
+        	});
+          g.title = 'Distance';
+		  g.title_font_size = 20;
+		  g.no_data_message;
+		  g.sort = true;
+		  g.hide_legend = true;
+		  
+	  	  
+		  	<% distance_values = Array.new %>
+		  	  
+		  	  	<% counter = -1 %>
+		  	  	<% @runs = current_user.runs.all(:order => 'created_at')%>
+		  		<% for run in @runs %>
+		  			<% distance_values << run.distance.to_s %>
+		  		<% end %>
+		  	
+		  		<% distance_values_string = distance_values.collect{|a| a + ", "}.to_s.chop %>
+		  			  	
+          		g.data("", [<%=distance_values_string%>]);
+       
+       	 		g.labels = {
+              			<% for run in @runs %>
+          		 		<% counter = counter + 1%>
+          				<%= counter %>: '<%=run.created_at.strftime("%d/%m/%y")%>',
+         				<% end %>
+         				};
+          
+	
+		  		g.font = "Helvetica";  
+     
+		  g.minimum_value = 0;
+		  <!-- g.hide_line_markers; -->
+          <!-- g.hide_dots = true; -->
+          g.draw();
+        };
+
+</script>
+</div>

@@ -27,6 +27,8 @@
 <% end %>
 </div>
 
+
+
 <div id="runs">
 <%= render :partial => 'run', :collection => @runs %>
 </div>
@@ -34,6 +36,13 @@
 <h1>My goal</h1>
 <div id="goal">
 <%= render :partial => 'goal', :object => @goal %>
+</div>
+
+<div id="graph_one">
+<%= render :partial => 'chart_distance' %>
+</div>
+<div id="graph_two">
+<%= render :partial => 'chart_avgspeed' %>
 </div>
 
 

@@ -203,6 +203,8 @@ before_filter :login_required
 	@goal = current_user.goals.first
 	@run.distance = params[:value]
 	@run.distance_comparison = (((@run.distance-@goal.distance)/@goal.distance)*100).round(1)
+	@run.avgspeed = ((@run.distance/@run.duration)*3600).round(1)
+    @run.avgspeed_comparison = (((@run.avgspeed-@goal.avgspeed)/@goal.avgspeed)*100).round(1)
 	@run.total_comparison = ((@run.distance_comparison+@run.avgspeed_comparison)/2).round(1)
 	@run.save
   end 
