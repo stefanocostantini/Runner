@@ -11,6 +11,7 @@ class CreateRuns < ActiveRecord::Migration
       t.float :avgspeed
       t.float :avgspeed_comparison
 	  t.float :total_comparison
+	  t.text :note
       t.integer :user_id
 
       t.timestamps

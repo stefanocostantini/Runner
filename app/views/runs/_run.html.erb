@@ -1,9 +1,49 @@
-<div class="run"> 
-    <%= run.distance %> (<%= run.distance_comparison %>%)
-    <%= run.hours %>|
-    <%= run.minutes %>|
-    <%= run.seconds %>
-    <%= run.avgspeed %> km/h (<%= run.avgspeed_comparison%>%)|
-    Total comparison: <%= run.total_comparison %>%
+<div class="run" id="<%= run.id %>"> 
+
+<% @run = run %>
+	
+	<span class="run_distance">
+	
+		<%= in_place_editor_field :run, :distance %> (<%= run.distance_comparison %>%) 
+		
+		&nbsp | &nbsp
+	
+	</span>
+	
+	<span class="run_time">
+	
+		<%= in_place_editor_field :run, :hours %>h &nbsp
+		<%= in_place_editor_field :run, :minutes %>' &nbsp
+		<%= in_place_editor_field :run, :seconds %>''
+		
+		&nbsp | &nbsp
+	
+	</span>
+	
+	<span class="run_avgspeed">
+	
+		<%= run.avgspeed %> km/h (<%= run.avgspeed_comparison%>%)
+		
+		&nbsp | &nbsp
+	
+	</span>
+	
+	<span class="run_performance">
+	
+		Run performance: <%= run.total_comparison %>% 
+		
+		&nbsp | &nbsp
+		
+	</span>
+	
+	<span class="run_note"></span>
+	
+		<%= in_place_editor_field :run, :note %>
+		
+		&nbsp | &nbsp
+	
+	<span class="run_delete"></span>
+	
     <%= link_to_remote 'Delete', :url => { :controller => 'runs', :action => 'delete', :id => run.id } %></td>
+
 </div>

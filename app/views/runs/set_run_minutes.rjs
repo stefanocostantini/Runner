@@ -1,0 +1,1 @@
+page.replace_html "#{@run.id}", :partial => 'run', :object => @run

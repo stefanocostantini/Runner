@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(:version => 20091115175255) do
     t.float    "avgspeed"
     t.float    "avgspeed_comparison"
     t.float    "total_comparison"
+    t.text     "note"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"

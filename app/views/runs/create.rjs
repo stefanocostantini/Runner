@@ -1,1 +1,9 @@
 page.replace_html 'runs', :partial => 'run', :collection => @runs
+
+
+page["run_distance"].clear
+page["run_hours"].clear
+page["run_minutes"].clear
+page["run_seconds"].clear
+
+

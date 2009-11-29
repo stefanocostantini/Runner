@@ -4,13 +4,14 @@ in_place_edit_for :run, :distance
 in_place_edit_for :run, :hours
 in_place_edit_for :run, :minutes
 in_place_edit_for :run, :seconds
+in_place_edit_for :run, :note
 
 before_filter :login_required
 
   # GET /runs
   # GET /runs.xml
   def index
-    @runs = current_user.runs.all
+    @runs = current_user.runs.all(:order => 'created_at DESC')
     @goal = current_user.goals.first
 
     respond_to do |format|
@@ -53,6 +54,7 @@ before_filter :login_required
     @goal = current_user.goals.first
     @run.duration = @run.hours*3600 + @run.minutes*60 + @run.seconds 
     @run.avgspeed = ((@run.distance/@run.duration)*3600).round(1)
+    @run.note = 'Enter notes here'
     
    
     @run.distance_comparison = (((@run.distance-@goal.distance)/@goal.distance)*100).round(1)
@@ -61,7 +63,7 @@ before_filter :login_required
     @run.total_comparison = ((@run.distance_comparison+@run.avgspeed_comparison)/2).round(1)
     
     @run.save 
-	@runs = current_user.runs.all 
+	@runs = current_user.runs.all(:order => 'created_at DESC') 
     
     #respond_to do |format|
      # if @run.save
@@ -107,7 +109,7 @@ before_filter :login_required
   def destroy
     @run = current_user.runs.find(params[:id])
     @run.destroy
-    @runs = current_user.runs.all 
+    @runs = current_user.runs.all(:order => 'created_at DESC') 
 
    # respond_to do |format|
    #  format.html { redirect_to(runs_url) }
@@ -129,7 +131,7 @@ before_filter :login_required
     		@run.total_comparison = ((@run.distance_comparison+@run.avgspeed_comparison)/2).round(1)
     		@run.save
 		end
-	@runs = current_user.runs.all
+	@runs = current_user.runs.all(:order => 'created_at DESC')
 	@goal = current_user.goals.first
   end
   
@@ -147,7 +149,7 @@ before_filter :login_required
     		@run.total_comparison = ((@run.distance_comparison+@run.avgspeed_comparison)/2).round(1)
     		@run.save
 		end
-	@runs = current_user.runs.all
+	@runs = current_user.runs.all(:order => 'created_at DESC')
     @goal = current_user.goals.first
   end
   
@@ -165,7 +167,7 @@ before_filter :login_required
     		@run.total_comparison = ((@run.distance_comparison+@run.avgspeed_comparison)/2).round(1)
     		@run.save
 		end
-	@runs = current_user.runs.all
+	@runs = current_user.runs.all(:order => 'created_at DESC')
     @goal = current_user.goals.first
   end
   
@@ -183,7 +185,7 @@ before_filter :login_required
     		@run.total_comparison = ((@run.distance_comparison+@run.avgspeed_comparison)/2).round(1)
     		@run.save
 		end
-	@runs = current_user.runs.all
+	@runs = current_user.runs.all(:order => 'created_at DESC')
     @goal = current_user.goals.first
   end
   
@@ -192,8 +194,51 @@ before_filter :login_required
     @run = current_user.runs.find(params[:id])
     @run.destroy
     	
- 	@runs = current_user.runs.all
+ 	@runs = current_user.runs.all(:order => 'created_at DESC')
    
   end 
+  
+  def set_run_distance
+	@run = current_user.runs.find(params[:id])
+	@goal = current_user.goals.first
+	@run.distance = params[:value]
+	@run.distance_comparison = (((@run.distance-@goal.distance)/@goal.distance)*100).round(1)
+	@run.total_comparison = ((@run.distance_comparison+@run.avgspeed_comparison)/2).round(1)
+	@run.save
+  end 
+  
+  def set_run_hours
+	@run = current_user.runs.find(params[:id])
+	@goal = current_user.goals.first
+	@run.hours = params[:value]
+	@run.duration = @run.hours*3600 + @run.minutes*60 + @run.seconds 
+    @run.avgspeed = ((@run.distance/@run.duration)*3600).round(1)
+    @run.avgspeed_comparison = (((@run.avgspeed-@goal.avgspeed)/@goal.avgspeed)*100).round(1)
+	@run.total_comparison = ((@run.distance_comparison+@run.avgspeed_comparison)/2).round(1)
+	@run.save
+  end
+  
+  def set_run_minutes
+	@run = current_user.runs.find(params[:id])
+	@goal = current_user.goals.first
+	@run.minutes = params[:value]
+	@run.duration = @run.hours*3600 + @run.minutes*60 + @run.seconds 
+    @run.avgspeed = ((@run.distance/@run.duration)*3600).round(1)
+    @run.avgspeed_comparison = (((@run.avgspeed-@goal.avgspeed)/@goal.avgspeed)*100).round(1)
+	@run.total_comparison = ((@run.distance_comparison+@run.avgspeed_comparison)/2).round(1)
+	@run.save
+  end
+  
+  def set_run_seconds
+	@run = current_user.runs.find(params[:id])
+	@goal = current_user.goals.first
+	@run.seconds = params[:value]
+	@run.duration = @run.hours*3600 + @run.minutes*60 + @run.seconds 
+    @run.avgspeed = ((@run.distance/@run.duration)*3600).round(1)
+    @run.avgspeed_comparison = (((@run.avgspeed-@goal.avgspeed)/@goal.avgspeed)*100).round(1)
+	@run.total_comparison = ((@run.distance_comparison+@run.avgspeed_comparison)/2).round(1)
+	@run.save
+  end    
+
   
 end
