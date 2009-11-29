@@ -20,12 +20,12 @@ class UsersController < ApplicationController
       
    		#create default goal
    			@goal = current_user.goals.new #(params[:goal])
-       		@goal.distance = 0
+       		@goal.distance = 8
     		@goal.hours = 0
-    		@goal.minutes = 0
-    		@goal.seconds = 1
+    		@goal.minutes = 40
+    		@goal.seconds = 0
     		@goal.duration = @goal.hours*3600 + @goal.minutes*60 + @goal.seconds 
-    		@goal.avgspeed = 0
+    		@goal.avgspeed = ((@goal.distance/@goal.duration)*3600).round(1)
     		@goal.save 
      
     else
