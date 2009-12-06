@@ -62,8 +62,9 @@ before_filter :login_required
     @run.avgspeed_comparison = (((@run.avgspeed-@goal.avgspeed)/@goal.avgspeed)*100).round(1)
     @run.total_comparison = ((@run.distance_comparison+@run.avgspeed_comparison)/2).round(1)
     
-    @run.save 
+	@run.save 
 	@runs = current_user.runs.all(:order => 'created_at DESC') 
+
     
     #respond_to do |format|
      # if @run.save

@@ -1,19 +1,26 @@
-<table>
-  <tr>
-    <th>Distance</th>
-    <th>Hours</th>
-    <th>Minutes</th>
-    <th>Seconds</th>
-    <th>Average speed</th>
-  </tr>
-  
-  <tr>
-  	<th><%= in_place_editor_field :goal, :distance %></th>
-  	<th><%= in_place_editor_field :goal, :hours %></th>
-  	<th><%= in_place_editor_field :goal, :minutes %></th>
-  	<th><%= in_place_editor_field :goal, :seconds %></th>
-  	<th><%= @goal.avgspeed %> km/h</th>
-
-  </tr>
-  
+	<span class="@goal_distance">
+	
+		<%= in_place_editor_field :goal, :distance %>
+				
+		&nbsp | &nbsp
+	
+	</span>
+	
+	<span class="@goal_time">
+	
+		<%= in_place_editor_field :goal, :hours %>h &nbsp
+		<%= in_place_editor_field :goal, :minutes %>' &nbsp
+		<%= in_place_editor_field :goal, :seconds %>''
+		
+		&nbsp | &nbsp
+	
+	</span>
+	
+	<span class="@goal_avgspeed">
+	
+		<%= @goal.avgspeed %> km/h
+				
+		&nbsp | &nbsp
+	
+	</span>
 

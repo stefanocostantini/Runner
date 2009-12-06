@@ -1,10 +1,10 @@
 page.replace_html 'runs', :partial => 'run', :collection => @runs
 
 
-page["run_distance"].clear
-page["run_hours"].clear
-page["run_minutes"].clear
-page["run_seconds"].clear
+page["run_distance"].value = 0
+page["run_hours"].value = 0
+page["run_minutes"].value = 0
+page["run_seconds"].value = 0
 
 
 page.replace_html 'graph_one', :partial => 'chart_distance'

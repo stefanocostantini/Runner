@@ -36,14 +36,17 @@
 		
 	</span>
 	
-	<span class="run_note"></span>
+	<span class="run_note">
 	
 		<%= in_place_editor_field :run, :note %>
 		
 		&nbsp | &nbsp
 	
-	<span class="run_delete"></span>
+	</span>
+	
+	<span class="run_delete">
 	
     <%= link_to_remote 'Delete', :url => { :controller => 'runs', :action => 'delete', :id => run.id } %></td>
 
+	</span>
 </div>

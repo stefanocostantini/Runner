@@ -26,9 +26,8 @@ class UsersController < ApplicationController
     		@goal.seconds = 0
     		@goal.duration = @goal.hours*3600 + @goal.minutes*60 + @goal.seconds 
     		@goal.avgspeed = ((@goal.distance/@goal.duration)*3600).round(1)
-    		@goal.save 
-     
-    else
+    		@goal.save
+     else
       render :action => 'new'
     end
   end
