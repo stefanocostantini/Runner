@@ -31263,3 +31263,217 @@ ActionController::RoutingError (No route matches "/session/javascripts/bluff-src
   
 
 Rendering rescues/layout (not_found)
+
+
+Processing RunsController#index (for 127.0.0.1 at 2010-01-03 21:29:19) [GET]
+Redirected to http://localhost:3000/session/new
+Filter chain halted as [:login_required] rendered_or_redirected.
+Completed in 26ms (DB: 0) | 302 Found [http://localhost/]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2010-01-03 21:29:20) [GET]
+Rendering template within layouts/application
+Rendering sessions/new
+Completed in 294ms (View: 291, DB: 0) | 200 OK [http://localhost/session/new]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-01-03 21:29:20) [GET]
+
+ActionController::RoutingError (No route matches "/session/javascripts/js-class.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-01-03 21:29:20) [GET]
+
+ActionController::RoutingError (No route matches "/session/javascripts/bluff-src.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-01-03 21:29:20) [GET]
+
+ActionController::RoutingError (No route matches "/session/javascripts/excanvas.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing SessionsController#create (for 127.0.0.1 at 2010-01-03 21:29:25) [POST]
+  Parameters: {"commit"=>"Log in", "authenticity_token"=>"x7Y49b92aN92Xe7CG/n1QjddMUhcLTXJ1csvWPBYmQ4=", "login"=>"stefano", "password"=>"kiruna"}
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."login" = 'stefano') LIMIT 1[0m
+Redirected to http://localhost:3000/
+Completed in 77ms (DB: 0) | 302 Found [http://localhost/session]
+
+
+Processing RunsController#index (for 127.0.0.1 at 2010-01-03 21:29:25) [GET]
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mRun Load (4.3ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mGoal Load (0.6ms)[0m   [0mSELECT * FROM "goals" WHERE ("goals".user_id = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering runs/index
+Rendered runs/_run (16.6ms)
+Rendered runs/_run (7.5ms)
+Rendered runs/_run (7.7ms)
+Rendered runs/_run (7.5ms)
+Rendered runs/_run (7.7ms)
+Rendered runs/_run (7.5ms)
+Rendered runs/_run (7.5ms)
+Rendered runs/_run (7.5ms)
+Rendered runs/_run (7.5ms)
+Rendered runs/_run (7.5ms)
+Rendered runs/_run (7.5ms)
+Rendered runs/_run (7.6ms)
+Rendered runs/_run (7.5ms)
+Rendered runs/_run (7.5ms)
+Rendered runs/_run (7.4ms)
+Rendered runs/_goal (10.8ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT max("runs".distance) AS max_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_distance (178.6ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT max("runs".avgspeed) AS max_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_avgspeed (6.4ms)
+Completed in 531ms (View: 466, DB: 6) | 200 OK [http://localhost/]
+
+
+Processing RunsController#delete (for 127.0.0.1 at 2010-01-03 21:29:37) [POST]
+  Parameters: {"authenticity_token"=>"x7Y49b92aN92Xe7CG/n1QjddMUhcLTXJ1csvWPBYmQ4=", "id"=>"47", "_"=>""}
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mRun Load (0.5ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs"."id" = 47 AND ("runs".user_id = 1)) [0m
+  [4;36;1mRun Destroy (0.6ms)[0m   [0;1mDELETE FROM "runs" WHERE "id" = 47[0m
+  [4;35;1mRun Load (3.9ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+Rendering runs/delete
+Rendered runs/_run (10.4ms)
+Rendered runs/_run (7.3ms)
+Rendered runs/_run (7.2ms)
+Rendered runs/_run (7.2ms)
+Rendered runs/_run (7.3ms)
+Rendered runs/_run (7.3ms)
+Rendered runs/_run (7.2ms)
+Rendered runs/_run (7.9ms)
+Rendered runs/_run (7.3ms)
+Rendered runs/_run (7.3ms)
+Rendered runs/_run (7.2ms)
+Rendered runs/_run (7.3ms)
+Rendered runs/_run (8.3ms)
+Rendered runs/_run (7.4ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT max("runs".distance) AS max_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_distance (5.0ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT max("runs".avgspeed) AS max_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_avgspeed (3.9ms)
+Completed in 294ms (View: 254, DB: 6) | 200 OK [http://localhost/runs/delete/47]
+
+
+Processing RunsController#delete (for 127.0.0.1 at 2010-01-03 21:29:38) [POST]
+  Parameters: {"authenticity_token"=>"x7Y49b92aN92Xe7CG/n1QjddMUhcLTXJ1csvWPBYmQ4=", "id"=>"46", "_"=>""}
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mRun Load (0.5ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs"."id" = 46 AND ("runs".user_id = 1)) [0m
+  [4;36;1mRun Destroy (135.3ms)[0m   [0;1mDELETE FROM "runs" WHERE "id" = 46[0m
+  [4;35;1mRun Load (4.8ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+Rendering runs/delete
+Rendered runs/_run (12.1ms)
+Rendered runs/_run (7.7ms)
+Rendered runs/_run (8.4ms)
+Rendered runs/_run (7.5ms)
+Rendered runs/_run (7.4ms)
+Rendered runs/_run (7.3ms)
+Rendered runs/_run (7.3ms)
+Rendered runs/_run (7.3ms)
+Rendered runs/_run (7.5ms)
+Rendered runs/_run (7.3ms)
+Rendered runs/_run (7.7ms)
+Rendered runs/_run (7.3ms)
+Rendered runs/_run (7.3ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT max("runs".distance) AS max_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_distance (4.0ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT max("runs".avgspeed) AS max_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_avgspeed (3.7ms)
+Completed in 312ms (View: 145, DB: 142) | 200 OK [http://localhost/runs/delete/46]
+
+
+Processing RunsController#delete (for 127.0.0.1 at 2010-01-03 21:29:39) [POST]
+  Parameters: {"authenticity_token"=>"x7Y49b92aN92Xe7CG/n1QjddMUhcLTXJ1csvWPBYmQ4=", "id"=>"45", "_"=>""}
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mRun Load (0.5ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs"."id" = 45 AND ("runs".user_id = 1)) [0m
+  [4;36;1mRun Destroy (176.3ms)[0m   [0;1mDELETE FROM "runs" WHERE "id" = 45[0m
+  [4;35;1mRun Load (3.3ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+Rendering runs/delete
+Rendered runs/_run (12.0ms)
+Rendered runs/_run (7.7ms)
+Rendered runs/_run (10.0ms)
+Rendered runs/_run (7.5ms)
+Rendered runs/_run (7.4ms)
+Rendered runs/_run (7.6ms)
+Rendered runs/_run (7.4ms)
+Rendered runs/_run (106.1ms)
+Rendered runs/_run (7.6ms)
+Rendered runs/_run (7.4ms)
+Rendered runs/_run (7.5ms)
+Rendered runs/_run (7.4ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT max("runs".distance) AS max_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_distance (3.8ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT max("runs".avgspeed) AS max_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_avgspeed (3.5ms)
+Completed in 442ms (View: 236, DB: 181) | 200 OK [http://localhost/runs/delete/45]
+
+
+Processing RunsController#delete (for 127.0.0.1 at 2010-01-03 21:29:41) [POST]
+  Parameters: {"authenticity_token"=>"x7Y49b92aN92Xe7CG/n1QjddMUhcLTXJ1csvWPBYmQ4=", "id"=>"44", "_"=>""}
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mRun Load (0.5ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs"."id" = 44 AND ("runs".user_id = 1)) [0m
+  [4;36;1mRun Destroy (0.4ms)[0m   [0;1mDELETE FROM "runs" WHERE "id" = 44[0m
+  [4;35;1mRun Load (2.6ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+Rendering runs/delete
+Rendered runs/_run (10.4ms)
+Rendered runs/_run (7.4ms)
+Rendered runs/_run (7.3ms)
+Rendered runs/_run (7.2ms)
+Rendered runs/_run (7.4ms)
+Rendered runs/_run (7.3ms)
+Rendered runs/_run (7.3ms)
+Rendered runs/_run (7.3ms)
+Rendered runs/_run (7.6ms)
+Rendered runs/_run (7.4ms)
+Rendered runs/_run (7.5ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT max("runs".distance) AS max_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_distance (3.6ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT max("runs".avgspeed) AS max_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_avgspeed (3.2ms)
+Completed in 150ms (View: 122, DB: 5) | 200 OK [http://localhost/runs/delete/44]
+
+
+Processing RunsController#delete (for 127.0.0.1 at 2010-01-03 21:29:47) [POST]
+  Parameters: {"authenticity_token"=>"x7Y49b92aN92Xe7CG/n1QjddMUhcLTXJ1csvWPBYmQ4=", "id"=>"42", "_"=>""}
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mRun Load (0.5ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs"."id" = 42 AND ("runs".user_id = 1)) [0m
+  [4;36;1mRun Destroy (0.4ms)[0m   [0;1mDELETE FROM "runs" WHERE "id" = 42[0m
+  [4;35;1mRun Load (2.5ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+Rendering runs/delete
+Rendered runs/_run (11.4ms)
+Rendered runs/_run (7.5ms)
+Rendered runs/_run (8.2ms)
+Rendered runs/_run (7.6ms)
+Rendered runs/_run (7.6ms)
+Rendered runs/_run (7.5ms)
+Rendered runs/_run (7.7ms)
+Rendered runs/_run (7.4ms)
+Rendered runs/_run (7.4ms)
+Rendered runs/_run (7.5ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT max("runs".distance) AS max_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_distance (3.5ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT max("runs".avgspeed) AS max_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_avgspeed (4.2ms)
+Completed in 156ms (View: 117, DB: 5) | 200 OK [http://localhost/runs/delete/42]
