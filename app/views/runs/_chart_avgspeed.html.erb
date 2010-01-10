@@ -7,11 +7,11 @@
  		function chart_avgspeed() {
         
 		  <!-- first chart -->
-		  var g = new Bluff.Bar('chart_avgspeed', '800x350');
+		  var g = new Bluff.Bar('chart_avgspeed', '500x320');
           g.theme_greyscale();
           g.title = 'Average Speed';
-		  g.title_font_size = 10;
-		  g.marker_font_size = 10;
+		  g.title_font_size = 14;
+		  g.marker_font_size = 14;
 		  g.no_data_message;
 		  <!-- g.sort = true; -->
 		  g.hide_legend = true;	
@@ -19,7 +19,7 @@
 		  	<% @runs = current_user.runs.all(:order => 'created_at DESC')%>
 		  	
 		  	<% counter = Array.new %>
-		  	<% counter = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19] %>	 
+		  	<% counter = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14] %>	 
 	  	  
 		  	<% avgspeed_values = Array.new %>
 		  	  
@@ -63,4 +63,3 @@
         };
 
 </script>
-</div>

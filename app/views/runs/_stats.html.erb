@@ -1,0 +1,13 @@
+<span id="average_speed">
+
+Average speed: <%= current_user.runs.average(:avgspeed).round(1) %> km/h (<%= current_user.runs.average (:avgspeed_comparison).round(1) %>%)
+
+</span> 
+
+<span id="average_distance">
+Average distance: <%= current_user.runs.average(:distance).round(1) %> km (<%= current_user.runs.average(:distance_comparison).round(1) %>%)
+</span>
+
+<span id="overall_performance">
+Overall performance: <%= current_user.runs.average(:total_comparison).round(1) %>%
+</span>

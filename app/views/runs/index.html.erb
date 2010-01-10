@@ -1,3 +1,14 @@
+<h1>My goal</h1>
+<div id="goal">
+<%= render :partial => 'goal', :object => @goal %>
+</div>
+
+<div id="charts">
+<div id="c_distance"><%= render :partial => 'chart_distance' %></div>
+<div id="c_avgspeed"><%= render :partial => 'chart_avgspeed' %></div>
+</div>
+
+
 <div id="new">
 
 	<% remote_form_for(:run, :url => {:controller => 'runs', :action => 'create'}, :html => {:id => 'new_form'}) do |f| %>
@@ -33,17 +44,7 @@
 <%= render :partial => 'run', :collection => @runs %>
 </div>
 
-<h1>My goal</h1>
-<div id="goal">
-<%= render :partial => 'goal', :object => @goal %>
-</div>
 
-<div id="graph_one">
-<%= render :partial => 'chart_distance' %>
-</div>
-<div id="graph_two">
-<%= render :partial => 'chart_avgspeed' %>
-</div>
 
 
 
