@@ -40393,3 +40393,2085 @@ Migrating to CreateUsers (20091115175255)
   [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("goals")[0m
   [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("runs")[0m
   [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("users")[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (12.4ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (1.7ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateRuns (20091115175022)
+  [4;36;1mSQL (0.9ms)[0m   [0;1mCREATE TABLE "runs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "distance" float, "distance_comparison" float, "hours" integer, "minutes" integer, "seconds" integer, "duration" float, "duration_comparison" float, "avgspeed" float, "avgspeed_comparison" float, "total_comparison" float, "note" text, "user_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20091115175022')[0m
+Migrating to CreateGoals (20091115175052)
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCREATE TABLE "goals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "distance" float, "hours" integer, "minutes" integer, "seconds" integer, "duration" integer, "avgspeed" float, "pace_minutes" integer, "pace_seconds" integer, "user_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.3ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20091115175052')[0m
+Migrating to CreateUsers (20091115175255)
+  [4;36;1mSQL (0.4ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "login" varchar(255), "email" varchar(255), "crypted_password" varchar(40), "salt" varchar(40), "created_at" datetime, "updated_at" datetime, "remember_token" varchar(255), "remember_token_expires_at" datetime) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20091115175255')[0m
+  [4;35;1mSQL (0.5ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.3ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mPRAGMA index_list("goals")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("runs")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("users")[0m
+
+
+Processing RunsController#index (for 127.0.0.1 at 2010-01-10 23:53:55) [GET]
+Redirected to http://localhost:3000/session/new
+Filter chain halted as [:login_required] rendered_or_redirected.
+Completed in 10ms (DB: 0) | 302 Found [http://localhost/]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2010-01-10 23:53:56) [GET]
+Rendering template within layouts/application
+Rendering sessions/new
+Completed in 118ms (View: 116, DB: 0) | 200 OK [http://localhost/session/new]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-01-10 23:53:56) [GET]
+
+ActionController::RoutingError (No route matches "/session/javascripts/excanvas.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-01-10 23:53:56) [GET]
+
+ActionController::RoutingError (No route matches "/session/javascripts/bluff-src.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-01-10 23:53:56) [GET]
+
+ActionController::RoutingError (No route matches "/session/javascripts/js-class.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing UsersController#new (for 127.0.0.1 at 2010-01-10 23:53:59) [GET]
+Rendering template within layouts/application
+Rendering users/new
+Completed in 19ms (View: 16, DB: 0) | 200 OK [http://localhost/signup]
+
+
+Processing UsersController#create (for 127.0.0.1 at 2010-01-10 23:54:08) [POST]
+  Parameters: {"commit"=>"Sign up", "authenticity_token"=>"EdUG6OHnHpUIEyznoRkUz6/kn3JuHIpVtyP3/vCNbsw=", "user"=>{"password_confirmation"=>"kiruna", "password"=>"kiruna", "login"=>"stefano", "email"=>"stefano.costantini@gmail.com"}}
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE (LOWER("users"."login") = 'stefano') LIMIT 1[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."email") = 'stefano.costantini@gmail.com') LIMIT 1[0m
+  [4;36;1mUser Create (1.8ms)[0m   [0;1mINSERT INTO "users" ("salt", "created_at", "crypted_password", "remember_token_expires_at", "updated_at", "remember_token", "login", "email") VALUES('f8f27d697e62198d2c93780d4040d3b058286e30', '2010-01-10 23:54:08', '504c5a22ef881ab26c419aacb182ad6a76945aa0', NULL, '2010-01-10 23:54:08', NULL, 'stefano', 'stefano.costantini@gmail.com')[0m
+Redirected to http://localhost:3000/
+  [4;35;1mGoal Create (0.6ms)[0m   [0mINSERT INTO "goals" ("seconds", "duration", "pace_minutes", "created_at", "minutes", "updated_at", "user_id", "hours", "avgspeed", "distance", "pace_seconds") VALUES(0, 2400, NULL, '2010-01-10 23:54:08', 40, '2010-01-10 23:54:08', 1, 0, 12.0, 8.0, NULL)[0m
+  [4;36;1mRun Create (0.6ms)[0m   [0;1mINSERT INTO "runs" ("seconds", "duration", "created_at", "minutes", "duration_comparison", "updated_at", "total_comparison", "user_id", "note", "distance_comparison", "hours", "avgspeed", "avgspeed_comparison", "distance") VALUES(0, 2400.0, '2010-01-10 23:54:08', 40, NULL, '2010-01-10 23:54:08', 0.0, 1, 'This is a sample entry, you can edit it by clicking on the all fields', 0.0, 0, 12.0, 0.0, 8.0)[0m
+Completed in 263ms (DB: 3) | 302 Found [http://localhost/users]
+
+
+Processing RunsController#index (for 127.0.0.1 at 2010-01-10 23:54:08) [GET]
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mRun Load (0.6ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mGoal Load (0.5ms)[0m   [0mSELECT * FROM "goals" WHERE ("goals".user_id = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering runs/index
+Rendered runs/_goal (11.4ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT max("runs".distance) AS max_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_distance (72.3ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT max("runs".avgspeed) AS max_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_avgspeed (4.6ms)
+Rendered runs/_run (11.0ms)
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT avg("runs".avgspeed) AS avg_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT avg("runs".avgspeed_comparison) AS avg_avgspeed_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT avg("runs".distance) AS avg_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT avg("runs".distance_comparison) AS avg_distance_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT avg("runs".total_comparison) AS avg_total_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_stats (6.1ms)
+Completed in 182ms (View: 156, DB: 3) | 200 OK [http://localhost/]
+
+
+Processing SessionsController#destroy (for 127.0.0.1 at 2010-01-10 23:54:18) [GET]
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Redirected to http://localhost:3000/
+Completed in 16ms (DB: 0) | 302 Found [http://localhost/logout]
+
+
+Processing RunsController#index (for 127.0.0.1 at 2010-01-10 23:54:18) [GET]
+Redirected to http://localhost:3000/session/new
+Filter chain halted as [:login_required] rendered_or_redirected.
+Completed in 1ms (DB: 0) | 302 Found [http://localhost/]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2010-01-10 23:54:18) [GET]
+Rendering template within layouts/application
+Rendering sessions/new
+Completed in 9ms (View: 7, DB: 0) | 200 OK [http://localhost/session/new]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-01-10 23:54:18) [GET]
+
+ActionController::RoutingError (No route matches "/session/javascripts/excanvas.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-01-10 23:54:18) [GET]
+
+ActionController::RoutingError (No route matches "/session/javascripts/js-class.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-01-10 23:54:18) [GET]
+
+ActionController::RoutingError (No route matches "/session/javascripts/bluff-src.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing RunsController#index (for 127.0.0.1 at 2010-01-17 22:03:52) [GET]
+Redirected to http://localhost:3000/session/new
+Filter chain halted as [:login_required] rendered_or_redirected.
+Completed in 24ms (DB: 0) | 302 Found [http://localhost/]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2010-01-17 22:03:53) [GET]
+Rendering template within layouts/application
+Rendering sessions/new
+Completed in 194ms (View: 192, DB: 0) | 200 OK [http://localhost/session/new]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-01-17 22:03:53) [GET]
+
+ActionController::RoutingError (No route matches "/session/javascripts/js-class.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-01-17 22:03:53) [GET]
+
+ActionController::RoutingError (No route matches "/session/javascripts/bluff-src.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-01-17 22:03:53) [GET]
+
+ActionController::RoutingError (No route matches "/session/javascripts/excanvas.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing SessionsController#create (for 127.0.0.1 at 2010-01-17 22:03:56) [POST]
+  Parameters: {"commit"=>"Log in", "authenticity_token"=>"NGjZfQx3h/1tU9WzErNnHYITZn120ZIHcvrxgQRpoeI=", "login"=>"stefano", "password"=>"kiruna"}
+  [4;36;1mUser Load (10.5ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."login" = 'stefano') LIMIT 1[0m
+Redirected to http://localhost:3000/
+Completed in 104ms (DB: 11) | 302 Found [http://localhost/session]
+
+
+Processing RunsController#index (for 127.0.0.1 at 2010-01-17 22:03:57) [GET]
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mRun Load (13.3ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mGoal Load (19.4ms)[0m   [0mSELECT * FROM "goals" WHERE ("goals".user_id = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering runs/index
+Rendered runs/_goal (11.9ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT max("runs".distance) AS max_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_distance (208.5ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT max("runs".avgspeed) AS max_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_avgspeed (14.4ms)
+Rendered runs/_run (9.2ms)
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT avg("runs".avgspeed) AS avg_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT avg("runs".avgspeed_comparison) AS avg_avgspeed_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT avg("runs".distance) AS avg_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT avg("runs".distance_comparison) AS avg_distance_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT avg("runs".total_comparison) AS avg_total_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_stats (22.2ms)
+Completed in 511ms (View: 401, DB: 35) | 200 OK [http://localhost/]
+
+
+Processing RunsController#create (for 127.0.0.1 at 2010-01-17 22:04:12) [POST]
+  Parameters: {"run"=>{"seconds"=>"12", "minutes"=>"29", "hours"=>"", "distance"=>"6"}, "commit"=>"Create", "authenticity_token"=>"NGjZfQx3h/1tU9WzErNnHYITZn120ZIHcvrxgQRpoeI=", "_"=>""}
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mGoal Load (0.5ms)[0m   [0;1mSELECT * FROM "goals" WHERE ("goals".user_id = 1) LIMIT 1[0m
+
+NoMethodError (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.*):
+  app/controllers/runs_controller.rb:55:in `create'
+
+Rendered rescues/_trace (45.8ms)
+Rendered rescues/_request_and_response (1.8ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing RunsController#create (for 127.0.0.1 at 2010-01-17 22:04:16) [POST]
+  Parameters: {"run"=>{"seconds"=>"12", "minutes"=>"29", "hours"=>"", "distance"=>"6"}, "commit"=>"Create", "authenticity_token"=>"NGjZfQx3h/1tU9WzErNnHYITZn120ZIHcvrxgQRpoeI=", "_"=>""}
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mGoal Load (0.5ms)[0m   [0;1mSELECT * FROM "goals" WHERE ("goals".user_id = 1) LIMIT 1[0m
+
+NoMethodError (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.*):
+  app/controllers/runs_controller.rb:55:in `create'
+
+Rendered rescues/_trace (136.1ms)
+Rendered rescues/_request_and_response (0.6ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing RunsController#create (for 127.0.0.1 at 2010-01-17 22:04:25) [POST]
+  Parameters: {"run"=>{"seconds"=>"12", "minutes"=>"29", "hours"=>"0", "distance"=>"6"}, "commit"=>"Create", "authenticity_token"=>"NGjZfQx3h/1tU9WzErNnHYITZn120ZIHcvrxgQRpoeI=", "_"=>""}
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mGoal Load (0.5ms)[0m   [0;1mSELECT * FROM "goals" WHERE ("goals".user_id = 1) LIMIT 1[0m
+  [4;35;1mRun Create (0.7ms)[0m   [0mINSERT INTO "runs" ("seconds", "duration", "created_at", "minutes", "duration_comparison", "updated_at", "total_comparison", "user_id", "note", "distance_comparison", "hours", "avgspeed", "avgspeed_comparison", "distance") VALUES(12, 1752.0, '2010-01-17 22:04:25', 29, NULL, '2010-01-17 22:04:25', -11.3, 1, 'Enter notes here', -25.0, 0, 12.3, 2.5, 6.0)[0m
+  [4;36;1mRun Load (0.8ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+Rendering runs/create
+Rendered runs/_run (7.9ms)
+Rendered runs/_run (7.2ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT max("runs".distance) AS max_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_distance (2.3ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT max("runs".avgspeed) AS max_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_avgspeed (2.0ms)
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT avg("runs".avgspeed) AS avg_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT avg("runs".avgspeed_comparison) AS avg_avgspeed_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT avg("runs".distance) AS avg_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT avg("runs".distance_comparison) AS avg_distance_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT avg("runs".total_comparison) AS avg_total_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_stats (4.4ms)
+Completed in 95ms (View: 56, DB: 4) | 200 OK [http://localhost/runs]
+
+
+Processing RunsController#delete (for 127.0.0.1 at 2010-01-17 22:04:29) [POST]
+  Parameters: {"authenticity_token"=>"NGjZfQx3h/1tU9WzErNnHYITZn120ZIHcvrxgQRpoeI=", "id"=>"2", "_"=>""}
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mRun Load (0.5ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs"."id" = 2 AND ("runs".user_id = 1)) [0m
+  [4;36;1mRun Destroy (0.4ms)[0m   [0;1mDELETE FROM "runs" WHERE "id" = 2[0m
+  [4;35;1mRun Load (0.8ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+Rendering runs/delete
+Rendered runs/_run (9.3ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT max("runs".distance) AS max_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_distance (2.2ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT max("runs".avgspeed) AS max_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_avgspeed (1.9ms)
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT avg("runs".avgspeed) AS avg_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT avg("runs".avgspeed_comparison) AS avg_avgspeed_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT avg("runs".distance) AS avg_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT avg("runs".distance_comparison) AS avg_distance_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT avg("runs".total_comparison) AS avg_total_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_stats (4.5ms)
+Completed in 73ms (View: 35, DB: 4) | 200 OK [http://localhost/runs/delete/2]
+
+
+Processing RunsController#create (for 127.0.0.1 at 2010-01-17 22:13:27) [POST]
+  Parameters: {"run"=>{"seconds"=>"10", "minutes"=>"0", "hours"=>"0", "distance"=>"1"}, "commit"=>"Create", "authenticity_token"=>"NGjZfQx3h/1tU9WzErNnHYITZn120ZIHcvrxgQRpoeI=", "_"=>""}
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mGoal Load (0.5ms)[0m   [0mSELECT * FROM "goals" WHERE ("goals".user_id = 1) LIMIT 1[0m
+  [4;36;1mRun Create (0.7ms)[0m   [0;1mINSERT INTO "runs" ("seconds", "duration", "created_at", "minutes", "duration_comparison", "updated_at", "total_comparison", "user_id", "note", "distance_comparison", "hours", "avgspeed", "avgspeed_comparison", "distance") VALUES(10, 10.0, '2010-01-17 22:13:27', 0, NULL, '2010-01-17 22:13:27', 1406.3, 1, 'Enter notes here', -87.5, 0, 360.0, 2900.0, 1.0)[0m
+  [4;35;1mRun Load (0.8ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+Rendering runs/create
+Rendered runs/_run (11.3ms)
+Rendered runs/_run (7.3ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT max("runs".distance) AS max_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_distance (74.8ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT max("runs".avgspeed) AS max_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_avgspeed (4.5ms)
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT avg("runs".avgspeed) AS avg_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT avg("runs".avgspeed_comparison) AS avg_avgspeed_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT avg("runs".distance) AS avg_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT avg("runs".distance_comparison) AS avg_distance_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT avg("runs".total_comparison) AS avg_total_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_stats (6.1ms)
+Completed in 304ms (View: 224, DB: 4) | 200 OK [http://localhost/runs]
+
+
+Processing RunsController#delete (for 127.0.0.1 at 2010-01-17 22:13:39) [POST]
+  Parameters: {"authenticity_token"=>"NGjZfQx3h/1tU9WzErNnHYITZn120ZIHcvrxgQRpoeI=", "id"=>"3", "_"=>""}
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mRun Load (0.5ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs"."id" = 3 AND ("runs".user_id = 1)) [0m
+  [4;35;1mRun Destroy (0.8ms)[0m   [0mDELETE FROM "runs" WHERE "id" = 3[0m
+  [4;36;1mRun Load (0.6ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+Rendering runs/delete
+Rendered runs/_run (10.0ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT max("runs".distance) AS max_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_distance (2.3ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT max("runs".avgspeed) AS max_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_avgspeed (2.0ms)
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT avg("runs".avgspeed) AS avg_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT avg("runs".avgspeed_comparison) AS avg_avgspeed_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT avg("runs".distance) AS avg_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT avg("runs".distance_comparison) AS avg_distance_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT avg("runs".total_comparison) AS avg_total_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_stats (5.0ms)
+Completed in 75ms (View: 36, DB: 4) | 200 OK [http://localhost/runs/delete/3]
+
+
+Processing RunsController#create (for 127.0.0.1 at 2010-01-17 22:13:46) [POST]
+  Parameters: {"run"=>{"seconds"=>"30", "minutes"=>"30", "hours"=>"0", "distance"=>"6"}, "commit"=>"Create", "authenticity_token"=>"NGjZfQx3h/1tU9WzErNnHYITZn120ZIHcvrxgQRpoeI=", "_"=>""}
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mGoal Load (0.5ms)[0m   [0mSELECT * FROM "goals" WHERE ("goals".user_id = 1) LIMIT 1[0m
+  [4;36;1mRun Create (0.5ms)[0m   [0;1mINSERT INTO "runs" ("seconds", "duration", "created_at", "minutes", "duration_comparison", "updated_at", "total_comparison", "user_id", "note", "distance_comparison", "hours", "avgspeed", "avgspeed_comparison", "distance") VALUES(30, 1830.0, '2010-01-17 22:13:46', 30, NULL, '2010-01-17 22:13:46', -13.4, 1, 'Enter notes here', -25.0, 0, 11.8, -1.7, 6.0)[0m
+  [4;35;1mRun Load (1.0ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+Rendering runs/create
+Rendered runs/_run (8.8ms)
+Rendered runs/_run (8.1ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT max("runs".distance) AS max_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_distance (2.7ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT max("runs".avgspeed) AS max_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_avgspeed (2.3ms)
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT avg("runs".avgspeed) AS avg_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT avg("runs".avgspeed_comparison) AS avg_avgspeed_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT avg("runs".distance) AS avg_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT avg("runs".distance_comparison) AS avg_distance_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT avg("runs".total_comparison) AS avg_total_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_stats (4.8ms)
+Completed in 184ms (View: 133, DB: 4) | 200 OK [http://localhost/runs]
+
+
+Processing RunsController#set_run_distance (for 127.0.0.1 at 2010-01-17 22:14:04) [POST]
+  Parameters: {"authenticity_token"=>"NGjZfQx3h/1tU9WzErNnHYITZn120ZIHcvrxgQRpoeI=", "id"=>"4", "value"=>"7", "_"=>"", "editorId"=>"run_distance_4_in_place_editor"}
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mRun Load (0.6ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs"."id" = 4 AND ("runs".user_id = 1)) [0m
+  [4;35;1mGoal Load (0.5ms)[0m   [0mSELECT * FROM "goals" WHERE ("goals".user_id = 1) LIMIT 1[0m
+  [4;36;1mRun Update (0.5ms)[0m   [0;1mUPDATE "runs" SET "distance" = 7.0, "avgspeed" = 13.8, "updated_at" = '2010-01-17 22:14:04', "distance_comparison" = -12.5, "avgspeed_comparison" = 15.0, "total_comparison" = 1.3 WHERE "id" = 4[0m
+Rendering runs/set_run_distance
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.size) on line #49 of app/views/runs/_run.html.erb:
+46: 	
+47: 	<span class="run_delete">
+48: 	
+49: 	<% unless @runs.size == 1 %>
+50: 	
+51:     <%= link_to_remote 'Delete', :url => { :controller => 'runs', :action => 'delete', :id => run.id } %></td>
+52: 
+
+    app/views/runs/_run.html.erb:49
+    app/views/runs/set_run_distance.rjs:1:in `_run_rjs_app47views47runs47set_run_distance46rjs'
+    app/views/runs/set_run_distance.rjs:1:in `_run_rjs_app47views47runs47set_run_distance46rjs'
+
+Rendered rescues/_trace (75.1ms)
+Rendered rescues/_request_and_response (1.8ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing RunsController#index (for 127.0.0.1 at 2010-01-17 22:14:11) [GET]
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mRun Load (0.8ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mGoal Load (0.5ms)[0m   [0mSELECT * FROM "goals" WHERE ("goals".user_id = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering runs/index
+Rendered runs/_goal (11.3ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT max("runs".distance) AS max_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_distance (7.5ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT max("runs".avgspeed) AS max_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_avgspeed (2.3ms)
+Rendered runs/_run (8.7ms)
+Rendered runs/_run (7.6ms)
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT avg("runs".avgspeed) AS avg_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT avg("runs".avgspeed_comparison) AS avg_avgspeed_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT avg("runs".distance) AS avg_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT avg("runs".distance_comparison) AS avg_distance_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT avg("runs".total_comparison) AS avg_total_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_stats (4.7ms)
+Completed in 195ms (View: 75, DB: 3) | 200 OK [http://localhost/]
+
+
+Processing RunsController#set_run_distance (for 127.0.0.1 at 2010-01-17 22:14:18) [POST]
+  Parameters: {"authenticity_token"=>"NGjZfQx3h/1tU9WzErNnHYITZn120ZIHcvrxgQRpoeI=", "id"=>"1", "value"=>"5", "_"=>"", "editorId"=>"run_distance_1_in_place_editor"}
+  [4;35;1mUser Load (0.6ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mRun Load (0.5ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs"."id" = 1 AND ("runs".user_id = 1)) [0m
+  [4;35;1mGoal Load (0.5ms)[0m   [0mSELECT * FROM "goals" WHERE ("goals".user_id = 1) LIMIT 1[0m
+  [4;36;1mRun Update (0.5ms)[0m   [0;1mUPDATE "runs" SET "distance" = 5.0, "avgspeed" = 7.5, "updated_at" = '2010-01-17 22:14:18', "distance_comparison" = -37.5, "avgspeed_comparison" = -37.5, "total_comparison" = -37.5 WHERE "id" = 1[0m
+Rendering runs/set_run_distance
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.size) on line #49 of app/views/runs/_run.html.erb:
+46: 	
+47: 	<span class="run_delete">
+48: 	
+49: 	<% unless @runs.size == 1 %>
+50: 	
+51:     <%= link_to_remote 'Delete', :url => { :controller => 'runs', :action => 'delete', :id => run.id } %></td>
+52: 
+
+    app/views/runs/_run.html.erb:49
+    app/views/runs/set_run_distance.rjs:1:in `_run_rjs_app47views47runs47set_run_distance46rjs'
+    app/views/runs/set_run_distance.rjs:1:in `_run_rjs_app47views47runs47set_run_distance46rjs'
+
+Rendered rescues/_trace (168.4ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing RunsController#index (for 127.0.0.1 at 2010-01-17 22:14:41) [GET]
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mRun Load (0.8ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mGoal Load (0.5ms)[0m   [0mSELECT * FROM "goals" WHERE ("goals".user_id = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering runs/index
+Rendered runs/_goal (8.8ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT max("runs".distance) AS max_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_distance (7.5ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT max("runs".avgspeed) AS max_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_avgspeed (2.0ms)
+Rendered runs/_run (7.5ms)
+Rendered runs/_run (7.3ms)
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT avg("runs".avgspeed) AS avg_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT avg("runs".avgspeed_comparison) AS avg_avgspeed_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT avg("runs".distance) AS avg_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT avg("runs".distance_comparison) AS avg_distance_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT avg("runs".total_comparison) AS avg_total_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_stats (4.7ms)
+Completed in 73ms (View: 47, DB: 3) | 200 OK [http://localhost/]
+
+
+Processing RunsController#set_run_distance (for 127.0.0.1 at 2010-01-17 22:14:45) [POST]
+  Parameters: {"authenticity_token"=>"NGjZfQx3h/1tU9WzErNnHYITZn120ZIHcvrxgQRpoeI=", "id"=>"1", "value"=>"2", "_"=>"", "editorId"=>"run_distance_1_in_place_editor"}
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mRun Load (0.5ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs"."id" = 1 AND ("runs".user_id = 1)) [0m
+  [4;35;1mGoal Load (0.5ms)[0m   [0mSELECT * FROM "goals" WHERE ("goals".user_id = 1) LIMIT 1[0m
+  [4;36;1mRun Update (0.5ms)[0m   [0;1mUPDATE "runs" SET "distance" = 2.0, "avgspeed" = 3.0, "updated_at" = '2010-01-17 22:14:45', "distance_comparison" = -75.0, "avgspeed_comparison" = -75.0, "total_comparison" = -75.0 WHERE "id" = 1[0m
+Rendering runs/set_run_distance
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.size) on line #49 of app/views/runs/_run.html.erb:
+46: 	
+47: 	<span class="run_delete">
+48: 	
+49: 	<% unless @runs.size == 1 %>
+50: 	
+51:     <%= link_to_remote 'Delete', :url => { :controller => 'runs', :action => 'delete', :id => run.id } %></td>
+52: 
+
+    app/views/runs/_run.html.erb:49
+    app/views/runs/set_run_distance.rjs:1:in `_run_rjs_app47views47runs47set_run_distance46rjs'
+    app/views/runs/set_run_distance.rjs:1:in `_run_rjs_app47views47runs47set_run_distance46rjs'
+
+Rendered rescues/_trace (167.9ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing RunsController#index (for 127.0.0.1 at 2010-01-17 22:14:54) [GET]
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mRun Load (0.8ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mGoal Load (0.5ms)[0m   [0mSELECT * FROM "goals" WHERE ("goals".user_id = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering runs/index
+Rendered runs/_goal (9.1ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT max("runs".distance) AS max_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_distance (6.9ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT max("runs".avgspeed) AS max_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_avgspeed (1.9ms)
+Rendered runs/_run (7.5ms)
+Rendered runs/_run (7.3ms)
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT avg("runs".avgspeed) AS avg_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT avg("runs".avgspeed_comparison) AS avg_avgspeed_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT avg("runs".distance) AS avg_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT avg("runs".distance_comparison) AS avg_distance_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT avg("runs".total_comparison) AS avg_total_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_stats (5.3ms)
+Completed in 75ms (View: 48, DB: 4) | 200 OK [http://localhost/]
+
+
+Processing RunsController#delete (for 127.0.0.1 at 2010-01-17 22:14:57) [POST]
+  Parameters: {"authenticity_token"=>"NGjZfQx3h/1tU9WzErNnHYITZn120ZIHcvrxgQRpoeI=", "id"=>"4", "_"=>""}
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mRun Load (0.5ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs"."id" = 4 AND ("runs".user_id = 1)) [0m
+  [4;35;1mRun Destroy (0.4ms)[0m   [0mDELETE FROM "runs" WHERE "id" = 4[0m
+  [4;36;1mRun Load (0.8ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+Rendering runs/delete
+Rendered runs/_run (11.1ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT max("runs".distance) AS max_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_distance (2.3ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT max("runs".avgspeed) AS max_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_avgspeed (1.9ms)
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT avg("runs".avgspeed) AS avg_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT avg("runs".avgspeed_comparison) AS avg_avgspeed_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT avg("runs".distance) AS avg_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT avg("runs".distance_comparison) AS avg_distance_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT avg("runs".total_comparison) AS avg_total_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_stats (4.5ms)
+Completed in 67ms (View: 30, DB: 4) | 200 OK [http://localhost/runs/delete/4]
+
+
+Processing RunsController#index (for 127.0.0.1 at 2010-01-17 22:15:22) [GET]
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mRun Load (1.2ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mGoal Load (0.5ms)[0m   [0;1mSELECT * FROM "goals" WHERE ("goals".user_id = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering runs/index
+Rendered runs/_goal (10.0ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT max("runs".distance) AS max_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_distance (7.2ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT max("runs".avgspeed) AS max_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_avgspeed (2.3ms)
+Rendered runs/_run (8.0ms)
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT avg("runs".avgspeed) AS avg_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT avg("runs".avgspeed_comparison) AS avg_avgspeed_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT avg("runs".distance) AS avg_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT avg("runs".distance_comparison) AS avg_distance_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT avg("runs".total_comparison) AS avg_total_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_stats (5.5ms)
+Completed in 76ms (View: 49, DB: 4) | 200 OK [http://localhost/]
+
+
+Processing RunsController#create (for 127.0.0.1 at 2010-01-17 22:15:29) [POST]
+  Parameters: {"run"=>{"seconds"=>"0", "minutes"=>"35", "hours"=>"0", "distance"=>"5"}, "commit"=>"Create", "authenticity_token"=>"NGjZfQx3h/1tU9WzErNnHYITZn120ZIHcvrxgQRpoeI=", "_"=>""}
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mGoal Load (0.5ms)[0m   [0mSELECT * FROM "goals" WHERE ("goals".user_id = 1) LIMIT 1[0m
+  [4;36;1mRun Create (0.6ms)[0m   [0;1mINSERT INTO "runs" ("seconds", "duration", "created_at", "minutes", "duration_comparison", "updated_at", "total_comparison", "user_id", "note", "distance_comparison", "hours", "avgspeed", "avgspeed_comparison", "distance") VALUES(0, 2100.0, '2010-01-17 22:15:29', 35, NULL, '2010-01-17 22:15:29', -32.9, 1, 'Enter notes here', -37.5, 0, 8.6, -28.3, 5.0)[0m
+  [4;35;1mRun Load (1.0ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+Rendering runs/create
+Rendered runs/_run (9.0ms)
+Rendered runs/_run (7.4ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT max("runs".distance) AS max_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_distance (2.4ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT max("runs".avgspeed) AS max_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_avgspeed (2.1ms)
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT avg("runs".avgspeed) AS avg_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT avg("runs".avgspeed_comparison) AS avg_avgspeed_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT avg("runs".distance) AS avg_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT avg("runs".distance_comparison) AS avg_distance_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT avg("runs".total_comparison) AS avg_total_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_stats (4.6ms)
+Completed in 87ms (View: 38, DB: 4) | 200 OK [http://localhost/runs]
+
+
+Processing RunsController#set_run_distance (for 127.0.0.1 at 2010-01-17 22:15:35) [POST]
+  Parameters: {"authenticity_token"=>"NGjZfQx3h/1tU9WzErNnHYITZn120ZIHcvrxgQRpoeI=", "id"=>"5", "value"=>"7", "_"=>"", "editorId"=>"run_distance_5_in_place_editor"}
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mRun Load (0.5ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs"."id" = 5 AND ("runs".user_id = 1)) [0m
+  [4;35;1mGoal Load (0.5ms)[0m   [0mSELECT * FROM "goals" WHERE ("goals".user_id = 1) LIMIT 1[0m
+  [4;36;1mRun Update (0.5ms)[0m   [0;1mUPDATE "runs" SET "distance" = 7.0, "avgspeed" = 12.0, "updated_at" = '2010-01-17 22:15:35', "distance_comparison" = -12.5, "avgspeed_comparison" = 0.0, "total_comparison" = -6.3 WHERE "id" = 5[0m
+Rendering runs/set_run_distance
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.size) on line #49 of app/views/runs/_run.html.erb:
+46: 	
+47: 	<span class="run_delete">
+48: 	
+49: 	<% if @runs.size > 1 %>
+50: 	
+51:     <%= link_to_remote 'Delete', :url => { :controller => 'runs', :action => 'delete', :id => run.id } %></td>
+52: 
+
+    app/views/runs/_run.html.erb:49
+    app/views/runs/set_run_distance.rjs:1:in `_run_rjs_app47views47runs47set_run_distance46rjs'
+    app/views/runs/set_run_distance.rjs:1:in `_run_rjs_app47views47runs47set_run_distance46rjs'
+
+Rendered rescues/_trace (71.2ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing RunsController#index (for 127.0.0.1 at 2010-01-17 22:16:11) [GET]
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mRun Load (0.9ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mGoal Load (0.5ms)[0m   [0mSELECT * FROM "goals" WHERE ("goals".user_id = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering runs/index
+Rendered runs/_goal (8.8ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT max("runs".distance) AS max_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_distance (7.4ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT max("runs".avgspeed) AS max_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_avgspeed (2.1ms)
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT count(*) AS count_all FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_run (10.7ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT count(*) AS count_all FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_run (8.6ms)
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT avg("runs".avgspeed) AS avg_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT avg("runs".avgspeed_comparison) AS avg_avgspeed_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT avg("runs".distance) AS avg_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT avg("runs".distance_comparison) AS avg_distance_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT avg("runs".total_comparison) AS avg_total_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_stats (4.6ms)
+Completed in 83ms (View: 57, DB: 4) | 200 OK [http://localhost/]
+
+
+Processing RunsController#set_run_distance (for 127.0.0.1 at 2010-01-17 22:16:15) [POST]
+  Parameters: {"authenticity_token"=>"NGjZfQx3h/1tU9WzErNnHYITZn120ZIHcvrxgQRpoeI=", "id"=>"5", "value"=>"10", "_"=>"", "editorId"=>"run_distance_5_in_place_editor"}
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mRun Load (0.5ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs"."id" = 5 AND ("runs".user_id = 1)) [0m
+  [4;35;1mGoal Load (0.5ms)[0m   [0mSELECT * FROM "goals" WHERE ("goals".user_id = 1) LIMIT 1[0m
+  [4;36;1mRun Update (0.5ms)[0m   [0;1mUPDATE "runs" SET "distance" = 10.0, "avgspeed" = 17.1, "updated_at" = '2010-01-17 22:16:15', "distance_comparison" = 25.0, "avgspeed_comparison" = 42.5, "total_comparison" = 33.8 WHERE "id" = 5[0m
+Rendering runs/set_run_distance
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT count(*) AS count_all FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_run (10.6ms)
+  [4;36;1mRun Load (0.8ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT max("runs".distance) AS max_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_distance (3.2ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT max("runs".avgspeed) AS max_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_avgspeed (2.0ms)
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT avg("runs".avgspeed) AS avg_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT avg("runs".avgspeed_comparison) AS avg_avgspeed_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT avg("runs".distance) AS avg_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT avg("runs".distance_comparison) AS avg_distance_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT avg("runs".total_comparison) AS avg_total_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_stats (4.4ms)
+Completed in 172ms (View: 30, DB: 5) | 200 OK [http://localhost/runs/set_run_distance/5]
+
+
+Processing RunsController#set_run_distance (for 127.0.0.1 at 2010-01-17 22:16:21) [POST]
+  Parameters: {"authenticity_token"=>"NGjZfQx3h/1tU9WzErNnHYITZn120ZIHcvrxgQRpoeI=", "id"=>"1", "value"=>"4", "_"=>"", "editorId"=>"run_distance_1_in_place_editor"}
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mRun Load (0.5ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs"."id" = 1 AND ("runs".user_id = 1)) [0m
+  [4;35;1mGoal Load (0.5ms)[0m   [0mSELECT * FROM "goals" WHERE ("goals".user_id = 1) LIMIT 1[0m
+  [4;36;1mRun Update (0.5ms)[0m   [0;1mUPDATE "runs" SET "distance" = 4.0, "avgspeed" = 6.0, "updated_at" = '2010-01-17 22:16:21', "distance_comparison" = -50.0, "avgspeed_comparison" = -50.0, "total_comparison" = -50.0 WHERE "id" = 1[0m
+Rendering runs/set_run_distance
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT count(*) AS count_all FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_run (9.1ms)
+  [4;36;1mRun Load (0.9ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT max("runs".distance) AS max_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_distance (4.2ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT max("runs".avgspeed) AS max_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_avgspeed (2.1ms)
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT avg("runs".avgspeed) AS avg_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT avg("runs".avgspeed_comparison) AS avg_avgspeed_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT avg("runs".distance) AS avg_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT avg("runs".distance_comparison) AS avg_distance_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT avg("runs".total_comparison) AS avg_total_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_stats (4.4ms)
+Completed in 79ms (View: 30, DB: 5) | 200 OK [http://localhost/runs/set_run_distance/1]
+
+
+Processing RunsController#delete (for 127.0.0.1 at 2010-01-17 22:16:23) [POST]
+  Parameters: {"authenticity_token"=>"NGjZfQx3h/1tU9WzErNnHYITZn120ZIHcvrxgQRpoeI=", "id"=>"5", "_"=>""}
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mRun Load (0.6ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs"."id" = 5 AND ("runs".user_id = 1)) [0m
+  [4;35;1mRun Destroy (0.5ms)[0m   [0mDELETE FROM "runs" WHERE "id" = 5[0m
+  [4;36;1mRun Load (0.6ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+Rendering runs/delete
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT count(*) AS count_all FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_run (9.9ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT max("runs".distance) AS max_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_distance (2.1ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT max("runs".avgspeed) AS max_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_avgspeed (1.8ms)
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT avg("runs".avgspeed) AS avg_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT avg("runs".avgspeed_comparison) AS avg_avgspeed_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT avg("runs".distance) AS avg_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT avg("runs".distance_comparison) AS avg_distance_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT avg("runs".total_comparison) AS avg_total_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_stats (5.1ms)
+Completed in 56ms (View: 29, DB: 4) | 200 OK [http://localhost/runs/delete/5]
+
+
+Processing RunsController#index (for 127.0.0.1 at 2010-01-17 22:19:24) [GET]
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mRun Load (0.6ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mGoal Load (0.5ms)[0m   [0mSELECT * FROM "goals" WHERE ("goals".user_id = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering runs/index
+Rendered runs/_goal (102.5ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT max("runs".distance) AS max_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_distance (7.2ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT max("runs".avgspeed) AS max_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_avgspeed (2.1ms)
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT count(*) AS count_all FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_run (7.1ms)
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT avg("runs".avgspeed) AS avg_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT avg("runs".avgspeed_comparison) AS avg_avgspeed_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT avg("runs".distance) AS avg_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT avg("runs".distance_comparison) AS avg_distance_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT avg("runs".total_comparison) AS avg_total_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_score (8.6ms)
+Completed in 176ms (View: 150, DB: 4) | 200 OK [http://localhost/]
+
+
+Processing RunsController#index (for 127.0.0.1 at 2010-01-17 22:19:59) [GET]
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mRun Load (0.7ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mGoal Load (0.5ms)[0m   [0;1mSELECT * FROM "goals" WHERE ("goals".user_id = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering runs/index
+Rendered runs/_goal (8.8ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT max("runs".distance) AS max_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_distance (7.0ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT max("runs".avgspeed) AS max_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_avgspeed (1.8ms)
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT count(*) AS count_all FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_run (7.0ms)
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT avg("runs".total_comparison) AS avg_total_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_score (1.8ms)
+Completed in 67ms (View: 41, DB: 3) | 200 OK [http://localhost/]
+
+
+Processing RunsController#index (for 127.0.0.1 at 2010-01-17 22:20:05) [GET]
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mRun Load (0.6ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mGoal Load (0.5ms)[0m   [0mSELECT * FROM "goals" WHERE ("goals".user_id = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering runs/index
+Rendered runs/_goal (8.9ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT max("runs".distance) AS max_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_distance (6.8ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT max("runs".avgspeed) AS max_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_avgspeed (1.8ms)
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT count(*) AS count_all FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_run (6.8ms)
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT avg("runs".total_comparison) AS avg_total_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_score (1.8ms)
+Completed in 66ms (View: 41, DB: 3) | 200 OK [http://localhost/]
+
+
+Processing RunsController#index (for 127.0.0.1 at 2010-01-17 22:20:27) [GET]
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mRun Load (0.7ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mGoal Load (0.5ms)[0m   [0;1mSELECT * FROM "goals" WHERE ("goals".user_id = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering runs/index
+Rendered runs/_goal (8.8ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT max("runs".distance) AS max_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_distance (6.7ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT max("runs".avgspeed) AS max_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_avgspeed (1.8ms)
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT count(*) AS count_all FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_run (7.1ms)
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT avg("runs".total_comparison) AS avg_total_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_score (1.2ms)
+Completed in 62ms (View: 35, DB: 3) | 200 OK [http://localhost/]
+
+
+Processing RunsController#index (for 127.0.0.1 at 2010-01-17 22:20:40) [GET]
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mRun Load (0.6ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mGoal Load (0.5ms)[0m   [0mSELECT * FROM "goals" WHERE ("goals".user_id = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering runs/index
+Rendered runs/_goal (8.7ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT max("runs".distance) AS max_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_distance (6.6ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT max("runs".avgspeed) AS max_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_avgspeed (1.8ms)
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT count(*) AS count_all FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_run (6.7ms)
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT avg("runs".total_comparison) AS avg_total_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_score (2.0ms)
+Completed in 60ms (View: 36, DB: 3) | 200 OK [http://localhost/]
+
+
+Processing RunsController#index (for 127.0.0.1 at 2010-01-17 22:21:26) [GET]
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mRun Load (0.6ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mGoal Load (0.5ms)[0m   [0;1mSELECT * FROM "goals" WHERE ("goals".user_id = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering runs/index
+Rendered runs/_goal (8.8ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT max("runs".distance) AS max_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_distance (6.6ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT max("runs".avgspeed) AS max_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_avgspeed (1.9ms)
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT count(*) AS count_all FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_run (6.8ms)
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT avg("runs".total_comparison) AS avg_total_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_score (1.4ms)
+Completed in 61ms (View: 35, DB: 3) | 200 OK [http://localhost/]
+
+
+Processing RunsController#index (for 127.0.0.1 at 2010-01-17 22:21:32) [GET]
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mRun Load (0.6ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mGoal Load (0.5ms)[0m   [0mSELECT * FROM "goals" WHERE ("goals".user_id = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering runs/index
+Rendered runs/_goal (9.0ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT max("runs".distance) AS max_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_distance (6.8ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT max("runs".avgspeed) AS max_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_avgspeed (2.0ms)
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT count(*) AS count_all FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_run (6.8ms)
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT avg("runs".total_comparison) AS avg_total_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_score (1.1ms)
+Completed in 61ms (View: 36, DB: 3) | 200 OK [http://localhost/]
+
+
+Processing RunsController#index (for 127.0.0.1 at 2010-01-17 22:21:53) [GET]
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mRun Load (0.6ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mGoal Load (0.5ms)[0m   [0;1mSELECT * FROM "goals" WHERE ("goals".user_id = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering runs/index
+Rendered runs/_goal (9.1ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT max("runs".distance) AS max_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_distance (6.8ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT max("runs".avgspeed) AS max_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_avgspeed (1.8ms)
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT count(*) AS count_all FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_run (6.9ms)
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT avg("runs".total_comparison) AS avg_total_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_score (1.2ms)
+Completed in 63ms (View: 36, DB: 3) | 200 OK [http://localhost/]
+
+
+Processing RunsController#index (for 127.0.0.1 at 2010-01-17 22:22:06) [GET]
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mRun Load (0.6ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mGoal Load (0.5ms)[0m   [0mSELECT * FROM "goals" WHERE ("goals".user_id = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering runs/index
+Rendered runs/_goal (8.6ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT max("runs".distance) AS max_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_distance (7.2ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT max("runs".avgspeed) AS max_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_avgspeed (2.0ms)
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT count(*) AS count_all FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_run (7.0ms)
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT avg("runs".total_comparison) AS avg_total_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_score (1.2ms)
+Completed in 144ms (View: 119, DB: 3) | 200 OK [http://localhost/]
+
+
+Processing RunsController#index (for 127.0.0.1 at 2010-01-17 22:22:23) [GET]
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mRun Load (0.6ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mGoal Load (0.5ms)[0m   [0;1mSELECT * FROM "goals" WHERE ("goals".user_id = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering runs/index
+Rendered runs/_goal (8.8ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT max("runs".distance) AS max_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_distance (6.6ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT max("runs".avgspeed) AS max_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_avgspeed (1.9ms)
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT count(*) AS count_all FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_run (7.0ms)
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT avg("runs".total_comparison) AS avg_total_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_score (1.2ms)
+Completed in 61ms (View: 36, DB: 3) | 200 OK [http://localhost/]
+
+
+Processing RunsController#index (for 127.0.0.1 at 2010-01-17 22:22:32) [GET]
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mRun Load (0.6ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mGoal Load (0.5ms)[0m   [0mSELECT * FROM "goals" WHERE ("goals".user_id = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering runs/index
+Rendered runs/_goal (8.7ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT max("runs".distance) AS max_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_distance (6.7ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT max("runs".avgspeed) AS max_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_avgspeed (2.0ms)
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT count(*) AS count_all FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_run (6.7ms)
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT avg("runs".total_comparison) AS avg_total_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_score (1.2ms)
+Completed in 62ms (View: 36, DB: 3) | 200 OK [http://localhost/]
+
+
+Processing RunsController#index (for 127.0.0.1 at 2010-01-17 22:22:42) [GET]
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mRun Load (0.6ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mGoal Load (0.5ms)[0m   [0;1mSELECT * FROM "goals" WHERE ("goals".user_id = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering runs/index
+Rendered runs/_goal (8.8ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT max("runs".distance) AS max_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_distance (6.6ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT max("runs".avgspeed) AS max_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_avgspeed (1.9ms)
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT count(*) AS count_all FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_run (7.0ms)
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT avg("runs".total_comparison) AS avg_total_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_score (1.1ms)
+Completed in 149ms (View: 35, DB: 3) | 200 OK [http://localhost/]
+
+
+Processing RunsController#index (for 127.0.0.1 at 2010-01-17 22:22:48) [GET]
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mRun Load (0.7ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mGoal Load (0.5ms)[0m   [0mSELECT * FROM "goals" WHERE ("goals".user_id = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering runs/index
+Rendered runs/_goal (9.0ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT max("runs".distance) AS max_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_distance (6.8ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT max("runs".avgspeed) AS max_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_avgspeed (1.8ms)
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT count(*) AS count_all FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_run (7.1ms)
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT avg("runs".total_comparison) AS avg_total_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_score (1.7ms)
+Completed in 63ms (View: 36, DB: 3) | 200 OK [http://localhost/]
+
+
+Processing RunsController#index (for 127.0.0.1 at 2010-01-17 22:22:56) [GET]
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mRun Load (0.6ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mGoal Load (0.5ms)[0m   [0;1mSELECT * FROM "goals" WHERE ("goals".user_id = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering runs/index
+Rendered runs/_goal (8.7ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT max("runs".distance) AS max_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_distance (6.6ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT max("runs".avgspeed) AS max_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_avgspeed (1.8ms)
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT count(*) AS count_all FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_run (7.8ms)
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT avg("runs".total_comparison) AS avg_total_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_score (1.2ms)
+Completed in 60ms (View: 36, DB: 3) | 200 OK [http://localhost/]
+
+
+Processing RunsController#index (for 127.0.0.1 at 2010-01-17 22:23:21) [GET]
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mRun Load (0.6ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mGoal Load (0.5ms)[0m   [0mSELECT * FROM "goals" WHERE ("goals".user_id = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering runs/index
+Rendered runs/_goal (9.0ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT max("runs".distance) AS max_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_distance (6.8ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT max("runs".avgspeed) AS max_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_avgspeed (1.8ms)
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT count(*) AS count_all FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_run (7.1ms)
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT avg("runs".total_comparison) AS avg_total_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_score (1.2ms)
+Completed in 61ms (View: 36, DB: 3) | 200 OK [http://localhost/]
+
+
+Processing RunsController#index (for 127.0.0.1 at 2010-01-17 22:23:30) [GET]
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mRun Load (0.6ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mGoal Load (0.5ms)[0m   [0;1mSELECT * FROM "goals" WHERE ("goals".user_id = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering runs/index
+Rendered runs/_goal (8.7ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT max("runs".distance) AS max_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_distance (6.5ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT max("runs".avgspeed) AS max_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_avgspeed (1.8ms)
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT count(*) AS count_all FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_run (6.8ms)
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT avg("runs".total_comparison) AS avg_total_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_score (1.2ms)
+Completed in 61ms (View: 35, DB: 3) | 200 OK [http://localhost/]
+
+
+Processing RunsController#index (for 127.0.0.1 at 2010-01-17 22:24:08) [GET]
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mRun Load (0.6ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mGoal Load (0.5ms)[0m   [0mSELECT * FROM "goals" WHERE ("goals".user_id = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering runs/index
+Rendered runs/_goal (8.8ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT max("runs".distance) AS max_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_distance (6.7ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT max("runs".avgspeed) AS max_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_avgspeed (1.9ms)
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT count(*) AS count_all FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_run (7.6ms)
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT avg("runs".total_comparison) AS avg_total_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_score (1.2ms)
+Completed in 62ms (View: 36, DB: 3) | 200 OK [http://localhost/]
+
+
+Processing RunsController#index (for 127.0.0.1 at 2010-01-17 22:25:24) [GET]
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mRun Load (0.7ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mGoal Load (0.5ms)[0m   [0;1mSELECT * FROM "goals" WHERE ("goals".user_id = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering runs/index
+Rendered runs/_goal (8.9ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT max("runs".distance) AS max_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_distance (6.8ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT max("runs".avgspeed) AS max_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_avgspeed (1.9ms)
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT count(*) AS count_all FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_run (6.9ms)
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT avg("runs".total_comparison) AS avg_total_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_score (1.3ms)
+Completed in 62ms (View: 37, DB: 3) | 200 OK [http://localhost/]
+
+
+Processing RunsController#index (for 127.0.0.1 at 2010-01-17 22:25:34) [GET]
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mRun Load (0.6ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mGoal Load (0.5ms)[0m   [0mSELECT * FROM "goals" WHERE ("goals".user_id = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering runs/index
+Rendered runs/_goal (9.6ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT max("runs".distance) AS max_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_distance (7.3ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT max("runs".avgspeed) AS max_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_avgspeed (1.8ms)
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT count(*) AS count_all FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_run (7.5ms)
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT avg("runs".total_comparison) AS avg_total_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_score (1.1ms)
+Completed in 63ms (View: 37, DB: 3) | 200 OK [http://localhost/]
+
+
+Processing RunsController#index (for 127.0.0.1 at 2010-01-17 22:27:56) [GET]
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mRun Load (0.7ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mGoal Load (0.5ms)[0m   [0;1mSELECT * FROM "goals" WHERE ("goals".user_id = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering runs/index
+Rendered runs/_goal (8.8ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT max("runs".distance) AS max_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_distance (90.9ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT max("runs".avgspeed) AS max_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_avgspeed (2.0ms)
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT count(*) AS count_all FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_run (6.9ms)
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT avg("runs".total_comparison) AS avg_total_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_score (1.2ms)
+Completed in 151ms (View: 126, DB: 3) | 200 OK [http://localhost/]
+
+
+Processing RunsController#set_run_distance (for 127.0.0.1 at 2010-01-17 22:28:00) [POST]
+  Parameters: {"authenticity_token"=>"NGjZfQx3h/1tU9WzErNnHYITZn120ZIHcvrxgQRpoeI=", "id"=>"1", "value"=>"10", "_"=>"", "editorId"=>"run_distance_1_in_place_editor"}
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mRun Load (0.5ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs"."id" = 1 AND ("runs".user_id = 1)) [0m
+  [4;35;1mGoal Load (0.5ms)[0m   [0mSELECT * FROM "goals" WHERE ("goals".user_id = 1) LIMIT 1[0m
+  [4;36;1mRun Update (0.5ms)[0m   [0;1mUPDATE "runs" SET "distance" = 10.0, "avgspeed" = 15.0, "updated_at" = '2010-01-17 22:28:00', "distance_comparison" = 25.0, "avgspeed_comparison" = 25.0, "total_comparison" = 25.0 WHERE "id" = 1[0m
+Rendering runs/set_run_distance
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT count(*) AS count_all FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_run (8.2ms)
+  [4;36;1mRun Load (0.6ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT max("runs".distance) AS max_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_distance (2.8ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT max("runs".avgspeed) AS max_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_avgspeed (2.4ms)
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT avg("runs".avgspeed) AS avg_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT avg("runs".avgspeed_comparison) AS avg_avgspeed_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT avg("runs".distance) AS avg_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT avg("runs".distance_comparison) AS avg_distance_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT avg("runs".total_comparison) AS avg_total_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_stats (5.9ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT avg("runs".total_comparison) AS avg_total_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_score (0.6ms)
+Completed in 89ms (View: 41, DB: 5) | 200 OK [http://localhost/runs/set_run_distance/1]
+
+
+Processing RunsController#index (for 127.0.0.1 at 2010-01-17 22:28:04) [GET]
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mRun Load (0.6ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mGoal Load (0.5ms)[0m   [0;1mSELECT * FROM "goals" WHERE ("goals".user_id = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering runs/index
+Rendered runs/_goal (8.8ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT max("runs".distance) AS max_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_distance (6.9ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT max("runs".avgspeed) AS max_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_avgspeed (2.2ms)
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT count(*) AS count_all FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_run (7.0ms)
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT avg("runs".total_comparison) AS avg_total_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_score (1.1ms)
+Completed in 63ms (View: 36, DB: 3) | 200 OK [http://localhost/]
+
+
+Processing RunsController#index (for 127.0.0.1 at 2010-01-17 22:28:17) [GET]
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mRun Load (0.7ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mGoal Load (0.5ms)[0m   [0mSELECT * FROM "goals" WHERE ("goals".user_id = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering runs/index
+Rendered runs/_goal (8.9ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT max("runs".distance) AS max_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_distance (6.8ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT max("runs".avgspeed) AS max_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_avgspeed (2.1ms)
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT count(*) AS count_all FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_run (6.8ms)
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT avg("runs".total_comparison) AS avg_total_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_score (1.3ms)
+Completed in 160ms (View: 43, DB: 3) | 200 OK [http://localhost/]
+
+
+Processing RunsController#set_run_distance (for 127.0.0.1 at 2010-01-17 22:28:20) [POST]
+  Parameters: {"authenticity_token"=>"NGjZfQx3h/1tU9WzErNnHYITZn120ZIHcvrxgQRpoeI=", "id"=>"1", "value"=>"8", "_"=>"", "editorId"=>"run_distance_1_in_place_editor"}
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mRun Load (0.5ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs"."id" = 1 AND ("runs".user_id = 1)) [0m
+  [4;36;1mGoal Load (0.5ms)[0m   [0;1mSELECT * FROM "goals" WHERE ("goals".user_id = 1) LIMIT 1[0m
+  [4;35;1mRun Update (0.5ms)[0m   [0mUPDATE "runs" SET "distance" = 8.0, "avgspeed" = 12.0, "updated_at" = '2010-01-17 22:28:20', "distance_comparison" = 0.0, "avgspeed_comparison" = 0.0, "total_comparison" = 0.0 WHERE "id" = 1[0m
+Rendering runs/set_run_distance
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT count(*) AS count_all FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_run (7.0ms)
+  [4;35;1mRun Load (0.6ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT max("runs".distance) AS max_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_distance (2.9ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT max("runs".avgspeed) AS max_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_avgspeed (1.9ms)
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT avg("runs".avgspeed) AS avg_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT avg("runs".avgspeed_comparison) AS avg_avgspeed_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT avg("runs".distance) AS avg_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT avg("runs".distance_comparison) AS avg_distance_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT avg("runs".total_comparison) AS avg_total_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_stats (4.3ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT avg("runs".total_comparison) AS avg_total_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_score (0.6ms)
+Completed in 75ms (View: 27, DB: 4) | 200 OK [http://localhost/runs/set_run_distance/1]
+
+
+Processing RunsController#index (for 127.0.0.1 at 2010-01-17 22:28:42) [GET]
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mRun Load (0.6ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mGoal Load (0.5ms)[0m   [0mSELECT * FROM "goals" WHERE ("goals".user_id = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering runs/index
+Rendered runs/_goal (9.0ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT max("runs".distance) AS max_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_distance (6.7ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT max("runs".avgspeed) AS max_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_avgspeed (1.8ms)
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT count(*) AS count_all FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_run (6.8ms)
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT avg("runs".total_comparison) AS avg_total_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_score (1.1ms)
+Completed in 67ms (View: 42, DB: 3) | 200 OK [http://localhost/]
+
+
+Processing RunsController#set_run_distance (for 127.0.0.1 at 2010-01-17 22:28:45) [POST]
+  Parameters: {"authenticity_token"=>"NGjZfQx3h/1tU9WzErNnHYITZn120ZIHcvrxgQRpoeI=", "id"=>"1", "value"=>"10", "_"=>"", "editorId"=>"run_distance_1_in_place_editor"}
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mRun Load (0.5ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs"."id" = 1 AND ("runs".user_id = 1)) [0m
+  [4;36;1mGoal Load (0.5ms)[0m   [0;1mSELECT * FROM "goals" WHERE ("goals".user_id = 1) LIMIT 1[0m
+  [4;35;1mRun Update (0.5ms)[0m   [0mUPDATE "runs" SET "distance" = 10.0, "avgspeed" = 15.0, "updated_at" = '2010-01-17 22:28:45', "distance_comparison" = 25.0, "avgspeed_comparison" = 25.0, "total_comparison" = 25.0 WHERE "id" = 1[0m
+Rendering runs/set_run_distance
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSELECT count(*) AS count_all FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_run (10.1ms)
+  [4;35;1mRun Load (0.6ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT max("runs".distance) AS max_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_distance (2.9ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT max("runs".avgspeed) AS max_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_avgspeed (1.9ms)
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT avg("runs".avgspeed) AS avg_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT avg("runs".avgspeed_comparison) AS avg_avgspeed_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT avg("runs".distance) AS avg_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT avg("runs".distance_comparison) AS avg_distance_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT avg("runs".total_comparison) AS avg_total_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_stats (5.3ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT avg("runs".total_comparison) AS avg_total_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_score (0.6ms)
+Completed in 81ms (View: 33, DB: 4) | 200 OK [http://localhost/runs/set_run_distance/1]
+
+
+Processing RunsController#set_run_distance (for 127.0.0.1 at 2010-01-17 22:28:49) [POST]
+  Parameters: {"authenticity_token"=>"NGjZfQx3h/1tU9WzErNnHYITZn120ZIHcvrxgQRpoeI=", "id"=>"1", "value"=>"2", "_"=>"", "editorId"=>"run_distance_1_in_place_editor"}
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mRun Load (0.5ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs"."id" = 1 AND ("runs".user_id = 1)) [0m
+  [4;35;1mGoal Load (0.5ms)[0m   [0mSELECT * FROM "goals" WHERE ("goals".user_id = 1) LIMIT 1[0m
+  [4;36;1mRun Update (0.5ms)[0m   [0;1mUPDATE "runs" SET "distance" = 2.0, "avgspeed" = 3.0, "updated_at" = '2010-01-17 22:28:49', "distance_comparison" = -75.0, "avgspeed_comparison" = -75.0, "total_comparison" = -75.0 WHERE "id" = 1[0m
+Rendering runs/set_run_distance
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT count(*) AS count_all FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_run (8.4ms)
+  [4;36;1mRun Load (0.6ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT max("runs".distance) AS max_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_distance (3.0ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT max("runs".avgspeed) AS max_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_avgspeed (2.1ms)
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT avg("runs".avgspeed) AS avg_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT avg("runs".avgspeed_comparison) AS avg_avgspeed_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT avg("runs".distance) AS avg_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT avg("runs".distance_comparison) AS avg_distance_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT avg("runs".total_comparison) AS avg_total_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_stats (4.4ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT avg("runs".total_comparison) AS avg_total_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_score (0.6ms)
+Completed in 77ms (View: 29, DB: 4) | 200 OK [http://localhost/runs/set_run_distance/1]
+
+
+Processing RunsController#set_run_distance (for 127.0.0.1 at 2010-01-17 22:28:52) [POST]
+  Parameters: {"authenticity_token"=>"NGjZfQx3h/1tU9WzErNnHYITZn120ZIHcvrxgQRpoeI=", "id"=>"1", "value"=>"4", "_"=>"", "editorId"=>"run_distance_1_in_place_editor"}
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mRun Load (0.5ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs"."id" = 1 AND ("runs".user_id = 1)) [0m
+  [4;36;1mGoal Load (0.5ms)[0m   [0;1mSELECT * FROM "goals" WHERE ("goals".user_id = 1) LIMIT 1[0m
+  [4;35;1mRun Update (0.5ms)[0m   [0mUPDATE "runs" SET "distance" = 4.0, "avgspeed" = 6.0, "updated_at" = '2010-01-17 22:28:52', "distance_comparison" = -50.0, "avgspeed_comparison" = -50.0, "total_comparison" = -50.0 WHERE "id" = 1[0m
+Rendering runs/set_run_distance
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT count(*) AS count_all FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_run (8.7ms)
+  [4;35;1mRun Load (0.6ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT max("runs".distance) AS max_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_distance (3.7ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT max("runs".avgspeed) AS max_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_avgspeed (1.9ms)
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT avg("runs".avgspeed) AS avg_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT avg("runs".avgspeed_comparison) AS avg_avgspeed_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT avg("runs".distance) AS avg_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT avg("runs".distance_comparison) AS avg_distance_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT avg("runs".total_comparison) AS avg_total_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_stats (4.7ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT avg("runs".total_comparison) AS avg_total_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_score (0.6ms)
+Completed in 79ms (View: 30, DB: 4) | 200 OK [http://localhost/runs/set_run_distance/1]
+
+
+Processing RunsController#index (for 127.0.0.1 at 2010-01-17 22:29:04) [GET]
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mRun Load (0.7ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mGoal Load (0.5ms)[0m   [0mSELECT * FROM "goals" WHERE ("goals".user_id = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering runs/index
+Rendered runs/_goal (8.9ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT max("runs".distance) AS max_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_distance (7.3ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT max("runs".avgspeed) AS max_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_avgspeed (1.9ms)
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT count(*) AS count_all FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_run (6.8ms)
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT avg("runs".total_comparison) AS avg_total_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_score (1.1ms)
+Completed in 61ms (View: 36, DB: 3) | 200 OK [http://localhost/]
+
+
+Processing RunsController#index (for 127.0.0.1 at 2010-01-17 22:29:22) [GET]
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mRun Load (0.6ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mGoal Load (0.5ms)[0m   [0;1mSELECT * FROM "goals" WHERE ("goals".user_id = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering runs/index
+Rendered runs/_goal (8.7ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT max("runs".distance) AS max_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_distance (6.6ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT max("runs".avgspeed) AS max_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_avgspeed (1.8ms)
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT count(*) AS count_all FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_run (6.8ms)
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT avg("runs".total_comparison) AS avg_total_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_score (1.1ms)
+Completed in 60ms (View: 36, DB: 3) | 200 OK [http://localhost/]
+
+
+Processing RunsController#index (for 127.0.0.1 at 2010-01-17 22:29:27) [GET]
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mRun Load (0.7ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mGoal Load (0.5ms)[0m   [0mSELECT * FROM "goals" WHERE ("goals".user_id = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering runs/index
+Rendered runs/_goal (9.4ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT max("runs".distance) AS max_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_distance (6.7ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT max("runs".avgspeed) AS max_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_avgspeed (2.8ms)
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT count(*) AS count_all FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_run (7.1ms)
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT avg("runs".total_comparison) AS avg_total_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_score (1.2ms)
+Completed in 63ms (View: 38, DB: 3) | 200 OK [http://localhost/]
+
+
+Processing RunsController#index (for 127.0.0.1 at 2010-01-17 22:29:34) [GET]
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mRun Load (0.7ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mGoal Load (0.5ms)[0m   [0;1mSELECT * FROM "goals" WHERE ("goals".user_id = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering runs/index
+Rendered runs/_goal (8.9ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT max("runs".distance) AS max_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_distance (7.3ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT max("runs".avgspeed) AS max_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_avgspeed (2.2ms)
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT count(*) AS count_all FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_run (7.1ms)
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT avg("runs".total_comparison) AS avg_total_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_score (1.1ms)
+Completed in 62ms (View: 37, DB: 3) | 200 OK [http://localhost/]
+
+
+Processing RunsController#index (for 127.0.0.1 at 2010-01-17 22:30:09) [GET]
+Redirected to http://localhost:3000/session/new
+Filter chain halted as [:login_required] rendered_or_redirected.
+Completed in 13ms (DB: 0) | 302 Found [http://localhost/]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2010-01-17 22:30:09) [GET]
+Rendering template within layouts/application
+Rendering sessions/new
+Completed in 21ms (View: 18, DB: 0) | 200 OK [http://localhost/session/new]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-01-17 22:30:09) [GET]
+
+ActionController::RoutingError (No route matches "/session/javascripts/js-class.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-01-17 22:30:09) [GET]
+
+ActionController::RoutingError (No route matches "/session/javascripts/bluff-src.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-01-17 22:30:09) [GET]
+
+ActionController::RoutingError (No route matches "/session/javascripts/excanvas.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-01-17 22:30:10) [GET]
+
+ActionController::RoutingError (No route matches "/session/javascripts/js-class.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-01-17 22:30:10) [GET]
+
+ActionController::RoutingError (No route matches "/session/javascripts/bluff-src.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-01-17 22:30:10) [GET]
+
+ActionController::RoutingError (No route matches "/session/javascripts/excanvas.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing SessionsController#create (for 127.0.0.1 at 2010-01-17 22:30:14) [POST]
+  Parameters: {"commit"=>"Log in", "authenticity_token"=>"iD2JSh3svmIFGk3OKZJ4mGZDGzYQBlr87SOKvdVwlk4=", "login"=>"stefano", "password"=>"kiruna"}
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."login" = 'stefano') LIMIT 1[0m
+Redirected to http://localhost:3000/
+Completed in 16ms (DB: 0) | 302 Found [http://localhost/session]
+
+
+Processing RunsController#index (for 127.0.0.1 at 2010-01-17 22:30:14) [GET]
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mRun Load (0.7ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mGoal Load (0.5ms)[0m   [0;1mSELECT * FROM "goals" WHERE ("goals".user_id = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering runs/index
+Rendered runs/_goal (9.0ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT max("runs".distance) AS max_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_distance (7.0ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT max("runs".avgspeed) AS max_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_avgspeed (1.9ms)
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT count(*) AS count_all FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_run (7.1ms)
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT avg("runs".total_comparison) AS avg_total_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_score (1.1ms)
+Completed in 63ms (View: 36, DB: 3) | 200 OK [http://localhost/]
+
+
+Processing RunsController#index (for 127.0.0.1 at 2010-01-17 22:30:50) [GET]
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mRun Load (0.9ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mGoal Load (0.6ms)[0m   [0mSELECT * FROM "goals" WHERE ("goals".user_id = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering runs/index
+Rendered runs/_goal (9.5ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT max("runs".distance) AS max_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_distance (7.0ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT max("runs".avgspeed) AS max_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_avgspeed (1.9ms)
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT count(*) AS count_all FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_run (6.8ms)
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT avg("runs".total_comparison) AS avg_total_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_score (1.5ms)
+Completed in 71ms (View: 38, DB: 3) | 200 OK [http://localhost/]
+
+
+Processing RunsController#index (for 127.0.0.1 at 2010-01-17 22:31:00) [GET]
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mRun Load (0.7ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mGoal Load (0.6ms)[0m   [0;1mSELECT * FROM "goals" WHERE ("goals".user_id = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering runs/index
+Rendered runs/_goal (8.9ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT max("runs".distance) AS max_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_distance (7.8ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT max("runs".avgspeed) AS max_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_avgspeed (2.3ms)
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT count(*) AS count_all FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_run (6.8ms)
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT avg("runs".total_comparison) AS avg_total_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_score (1.3ms)
+Completed in 72ms (View: 37, DB: 3) | 200 OK [http://localhost/]
+
+
+Processing RunsController#index (for 127.0.0.1 at 2010-01-17 22:31:04) [GET]
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mRun Load (0.7ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mGoal Load (0.5ms)[0m   [0mSELECT * FROM "goals" WHERE ("goals".user_id = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering runs/index
+Rendered runs/_goal (9.4ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT max("runs".distance) AS max_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_distance (6.9ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT max("runs".avgspeed) AS max_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_avgspeed (1.8ms)
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT count(*) AS count_all FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_run (6.8ms)
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT avg("runs".total_comparison) AS avg_total_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_score (1.2ms)
+Completed in 63ms (View: 36, DB: 3) | 200 OK [http://localhost/]
+
+
+Processing RunsController#index (for 127.0.0.1 at 2010-01-17 22:31:12) [GET]
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mRun Load (0.7ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mGoal Load (0.6ms)[0m   [0;1mSELECT * FROM "goals" WHERE ("goals".user_id = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering runs/index
+Rendered runs/_goal (9.8ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT max("runs".distance) AS max_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_distance (8.8ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT max("runs".avgspeed) AS max_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_avgspeed (2.8ms)
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT count(*) AS count_all FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_run (7.6ms)
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT avg("runs".total_comparison) AS avg_total_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_score (1.5ms)
+Completed in 79ms (View: 43, DB: 3) | 200 OK [http://localhost/]
+
+
+Processing RunsController#index (for 127.0.0.1 at 2010-01-17 22:31:20) [GET]
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mRun Load (0.7ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mGoal Load (0.6ms)[0m   [0mSELECT * FROM "goals" WHERE ("goals".user_id = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering runs/index
+Rendered runs/_goal (8.9ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT max("runs".distance) AS max_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_distance (6.7ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT max("runs".avgspeed) AS max_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_avgspeed (1.9ms)
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT count(*) AS count_all FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_run (6.8ms)
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT avg("runs".total_comparison) AS avg_total_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_score (1.3ms)
+Completed in 70ms (View: 36, DB: 3) | 200 OK [http://localhost/]
+
+
+Processing RunsController#index (for 127.0.0.1 at 2010-01-17 22:31:23) [GET]
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mRun Load (0.7ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mGoal Load (0.5ms)[0m   [0;1mSELECT * FROM "goals" WHERE ("goals".user_id = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering runs/index
+Rendered runs/_goal (8.9ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT max("runs".distance) AS max_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_distance (6.9ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT max("runs".avgspeed) AS max_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_avgspeed (1.9ms)
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT count(*) AS count_all FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_run (6.8ms)
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT avg("runs".total_comparison) AS avg_total_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_score (1.2ms)
+Completed in 61ms (View: 36, DB: 3) | 200 OK [http://localhost/]
+
+
+Processing RunsController#index (for 127.0.0.1 at 2010-01-17 22:31:25) [GET]
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mRun Load (0.6ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mGoal Load (0.5ms)[0m   [0mSELECT * FROM "goals" WHERE ("goals".user_id = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering runs/index
+Rendered runs/_goal (8.8ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT max("runs".distance) AS max_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_distance (6.6ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT max("runs".avgspeed) AS max_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_avgspeed (82.1ms)
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT count(*) AS count_all FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_run (6.9ms)
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT avg("runs".total_comparison) AS avg_total_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_score (1.3ms)
+Completed in 142ms (View: 116, DB: 3) | 200 OK [http://localhost/]
+
+
+Processing RunsController#index (for 127.0.0.1 at 2010-01-17 22:31:32) [GET]
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mRun Load (2.4ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mGoal Load (0.6ms)[0m   [0;1mSELECT * FROM "goals" WHERE ("goals".user_id = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering runs/index
+Rendered runs/_goal (9.4ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT max("runs".distance) AS max_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_distance (6.9ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT max("runs".avgspeed) AS max_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_avgspeed (2.0ms)
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT count(*) AS count_all FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_run (7.0ms)
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT avg("runs".total_comparison) AS avg_total_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_score (1.5ms)
+Completed in 72ms (View: 37, DB: 5) | 200 OK [http://localhost/]
+
+
+Processing RunsController#index (for 127.0.0.1 at 2010-01-17 22:31:49) [GET]
+  [4;35;1mUser Load (0.7ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mRun Load (0.7ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mGoal Load (0.9ms)[0m   [0mSELECT * FROM "goals" WHERE ("goals".user_id = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering runs/index
+Rendered runs/_goal (10.0ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT max("runs".distance) AS max_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_distance (7.8ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT max("runs".avgspeed) AS max_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_avgspeed (4.1ms)
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSELECT count(*) AS count_all FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_run (8.0ms)
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT avg("runs".total_comparison) AS avg_total_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_score (1.5ms)
+Completed in 84ms (View: 42, DB: 4) | 200 OK [http://localhost/]
+
+
+Processing RunsController#index (for 127.0.0.1 at 2010-01-17 22:31:57) [GET]
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mRun Load (0.8ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mGoal Load (0.5ms)[0m   [0;1mSELECT * FROM "goals" WHERE ("goals".user_id = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering runs/index
+Rendered runs/_goal (9.3ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT max("runs".distance) AS max_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_distance (7.2ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT max("runs".avgspeed) AS max_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_avgspeed (1.9ms)
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT count(*) AS count_all FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_run (7.0ms)
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT avg("runs".total_comparison) AS avg_total_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_score (1.4ms)
+Completed in 148ms (View: 37, DB: 3) | 200 OK [http://localhost/]
+
+
+Processing RunsController#index (for 127.0.0.1 at 2010-01-17 22:32:05) [GET]
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mRun Load (0.7ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mGoal Load (0.5ms)[0m   [0mSELECT * FROM "goals" WHERE ("goals".user_id = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering runs/index
+Rendered runs/_goal (8.9ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT max("runs".distance) AS max_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_distance (6.7ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT max("runs".avgspeed) AS max_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_avgspeed (1.8ms)
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT count(*) AS count_all FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_run (7.2ms)
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT avg("runs".total_comparison) AS avg_total_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_score (1.4ms)
+Completed in 62ms (View: 36, DB: 3) | 200 OK [http://localhost/]
+
+
+Processing RunsController#index (for 127.0.0.1 at 2010-01-17 22:32:08) [GET]
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mRun Load (0.7ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mGoal Load (0.6ms)[0m   [0;1mSELECT * FROM "goals" WHERE ("goals".user_id = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering runs/index
+Rendered runs/_goal (9.4ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT max("runs".distance) AS max_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_distance (7.0ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSELECT max("runs".avgspeed) AS max_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_avgspeed (2.8ms)
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT count(*) AS count_all FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_run (7.2ms)
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT avg("runs".total_comparison) AS avg_total_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_score (1.3ms)
+Completed in 68ms (View: 38, DB: 3) | 200 OK [http://localhost/]
+
+
+Processing RunsController#index (for 127.0.0.1 at 2010-01-17 22:32:29) [GET]
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mRun Load (0.6ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mGoal Load (0.5ms)[0m   [0mSELECT * FROM "goals" WHERE ("goals".user_id = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering runs/index
+Rendered runs/_goal (9.0ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT max("runs".distance) AS max_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_distance (6.7ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT max("runs".avgspeed) AS max_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_avgspeed (1.7ms)
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT count(*) AS count_all FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_run (6.8ms)
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT avg("runs".total_comparison) AS avg_total_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_score (1.3ms)
+Completed in 61ms (View: 36, DB: 3) | 200 OK [http://localhost/]
+
+
+Processing RunsController#index (for 127.0.0.1 at 2010-01-17 22:32:31) [GET]
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mRun Load (0.6ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mGoal Load (0.5ms)[0m   [0;1mSELECT * FROM "goals" WHERE ("goals".user_id = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering runs/index
+Rendered runs/_goal (9.0ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT max("runs".distance) AS max_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_distance (6.8ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT max("runs".avgspeed) AS max_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_avgspeed (1.8ms)
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT count(*) AS count_all FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_run (6.8ms)
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT avg("runs".total_comparison) AS avg_total_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_score (1.1ms)
+Completed in 61ms (View: 36, DB: 3) | 200 OK [http://localhost/]
+
+
+Processing RunsController#index (for 127.0.0.1 at 2010-01-17 22:32:33) [GET]
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mRun Load (0.6ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mGoal Load (0.5ms)[0m   [0mSELECT * FROM "goals" WHERE ("goals".user_id = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering runs/index
+Rendered runs/_goal (9.2ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT max("runs".distance) AS max_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_distance (6.7ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT max("runs".avgspeed) AS max_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_avgspeed (1.8ms)
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT count(*) AS count_all FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_run (7.7ms)
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT avg("runs".total_comparison) AS avg_total_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_score (1.2ms)
+Completed in 63ms (View: 37, DB: 3) | 200 OK [http://localhost/]
+
+
+Processing RunsController#index (for 127.0.0.1 at 2010-01-17 22:32:38) [GET]
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mRun Load (0.8ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mGoal Load (0.6ms)[0m   [0;1mSELECT * FROM "goals" WHERE ("goals".user_id = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering runs/index
+Rendered runs/_goal (9.2ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT max("runs".distance) AS max_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_distance (6.8ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT max("runs".avgspeed) AS max_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_avgspeed (1.8ms)
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT count(*) AS count_all FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_run (6.8ms)
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT avg("runs".total_comparison) AS avg_total_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_score (1.3ms)
+Completed in 72ms (View: 36, DB: 3) | 200 OK [http://localhost/]
+
+
+Processing RunsController#index (for 127.0.0.1 at 2010-01-17 22:32:41) [GET]
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mRun Load (0.6ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mGoal Load (0.5ms)[0m   [0mSELECT * FROM "goals" WHERE ("goals".user_id = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering runs/index
+Rendered runs/_goal (9.3ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT max("runs".distance) AS max_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_distance (6.8ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT max("runs".avgspeed) AS max_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_avgspeed (1.8ms)
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT count(*) AS count_all FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_run (7.1ms)
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT avg("runs".total_comparison) AS avg_total_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_score (1.2ms)
+Completed in 61ms (View: 36, DB: 3) | 200 OK [http://localhost/]
+
+
+Processing RunsController#index (for 127.0.0.1 at 2010-01-17 22:32:56) [GET]
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mRun Load (0.7ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mGoal Load (0.5ms)[0m   [0;1mSELECT * FROM "goals" WHERE ("goals".user_id = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering runs/index
+Rendered runs/_goal (8.9ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT max("runs".distance) AS max_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_distance (6.6ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT max("runs".avgspeed) AS max_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_avgspeed (1.7ms)
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT count(*) AS count_all FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_run (7.5ms)
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT avg("runs".total_comparison) AS avg_total_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_score (1.2ms)
+Completed in 70ms (View: 36, DB: 3) | 200 OK [http://localhost/]
+
+
+Processing RunsController#index (for 127.0.0.1 at 2010-01-17 22:33:02) [GET]
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mRun Load (0.7ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mGoal Load (0.5ms)[0m   [0mSELECT * FROM "goals" WHERE ("goals".user_id = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering runs/index
+Rendered runs/_goal (8.9ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT max("runs".distance) AS max_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_distance (6.6ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT max("runs".avgspeed) AS max_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_avgspeed (1.9ms)
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT count(*) AS count_all FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_run (7.0ms)
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT avg("runs".total_comparison) AS avg_total_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_score (1.1ms)
+Completed in 73ms (View: 36, DB: 3) | 200 OK [http://localhost/]
+
+
+Processing RunsController#index (for 127.0.0.1 at 2010-01-17 22:33:12) [GET]
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mRun Load (0.7ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mGoal Load (0.5ms)[0m   [0;1mSELECT * FROM "goals" WHERE ("goals".user_id = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering runs/index
+Rendered runs/_goal (9.6ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT max("runs".distance) AS max_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_distance (6.9ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT max("runs".avgspeed) AS max_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_avgspeed (1.8ms)
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT count(*) AS count_all FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_run (6.9ms)
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT avg("runs".total_comparison) AS avg_total_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_score (1.1ms)
+Completed in 75ms (View: 38, DB: 3) | 200 OK [http://localhost/]
+
+
+Processing RunsController#index (for 127.0.0.1 at 2010-01-17 22:33:19) [GET]
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mRun Load (0.7ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mGoal Load (0.5ms)[0m   [0mSELECT * FROM "goals" WHERE ("goals".user_id = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering runs/index
+Rendered runs/_goal (8.7ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT max("runs".distance) AS max_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_distance (6.6ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT max("runs".avgspeed) AS max_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_avgspeed (2.3ms)
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT count(*) AS count_all FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_run (7.1ms)
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT avg("runs".total_comparison) AS avg_total_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_score (1.3ms)
+Completed in 145ms (View: 120, DB: 3) | 200 OK [http://localhost/]
+
+
+Processing RunsController#index (for 127.0.0.1 at 2010-01-17 22:33:49) [GET]
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mRun Load (0.6ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mGoal Load (0.5ms)[0m   [0;1mSELECT * FROM "goals" WHERE ("goals".user_id = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering runs/index
+Rendered runs/_goal (9.3ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT max("runs".distance) AS max_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_distance (7.5ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT max("runs".avgspeed) AS max_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_avgspeed (2.0ms)
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT count(*) AS count_all FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_run (7.0ms)
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT avg("runs".total_comparison) AS avg_total_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_score (1.2ms)
+Completed in 62ms (View: 37, DB: 3) | 200 OK [http://localhost/]
+
+
+Processing RunsController#index (for 127.0.0.1 at 2010-01-17 22:33:54) [GET]
+  [4;35;1mUser Load (0.7ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mRun Load (0.7ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mGoal Load (0.5ms)[0m   [0mSELECT * FROM "goals" WHERE ("goals".user_id = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering runs/index
+Rendered runs/_goal (8.6ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT max("runs".distance) AS max_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_distance (7.5ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT max("runs".avgspeed) AS max_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_avgspeed (1.8ms)
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT count(*) AS count_all FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_run (6.9ms)
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT avg("runs".total_comparison) AS avg_total_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_score (1.1ms)
+Completed in 71ms (View: 36, DB: 3) | 200 OK [http://localhost/]
+
+
+Processing RunsController#index (for 127.0.0.1 at 2010-01-17 22:34:05) [GET]
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mRun Load (0.7ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mGoal Load (0.5ms)[0m   [0;1mSELECT * FROM "goals" WHERE ("goals".user_id = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering runs/index
+Rendered runs/_goal (9.6ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT max("runs".distance) AS max_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_distance (7.0ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT max("runs".avgspeed) AS max_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_avgspeed (2.0ms)
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT count(*) AS count_all FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_run (7.0ms)
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT avg("runs".total_comparison) AS avg_total_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_score (1.2ms)
+Completed in 148ms (View: 38, DB: 3) | 200 OK [http://localhost/]
+
+
+Processing RunsController#index (for 127.0.0.1 at 2010-01-17 22:34:06) [GET]
+  [4;35;1mUser Load (0.6ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mRun Load (0.7ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mGoal Load (0.6ms)[0m   [0mSELECT * FROM "goals" WHERE ("goals".user_id = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering runs/index
+Rendered runs/_goal (8.7ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT max("runs".distance) AS max_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_distance (6.6ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT max("runs".avgspeed) AS max_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_avgspeed (1.8ms)
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT count(*) AS count_all FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_run (6.9ms)
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT avg("runs".total_comparison) AS avg_total_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_score (1.1ms)
+Completed in 72ms (View: 35, DB: 3) | 200 OK [http://localhost/]
+
+
+Processing RunsController#index (for 127.0.0.1 at 2010-01-17 22:34:11) [GET]
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mRun Load (0.6ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mGoal Load (0.6ms)[0m   [0;1mSELECT * FROM "goals" WHERE ("goals".user_id = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering runs/index
+Rendered runs/_goal (8.9ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT max("runs".distance) AS max_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_distance (6.9ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT max("runs".avgspeed) AS max_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_avgspeed (1.8ms)
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT count(*) AS count_all FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_run (8.0ms)
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT avg("runs".total_comparison) AS avg_total_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_score (1.2ms)
+Completed in 63ms (View: 37, DB: 3) | 200 OK [http://localhost/]
+
+
+Processing RunsController#index (for 127.0.0.1 at 2010-01-17 22:34:14) [GET]
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mRun Load (0.7ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mGoal Load (0.5ms)[0m   [0mSELECT * FROM "goals" WHERE ("goals".user_id = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering runs/index
+Rendered runs/_goal (9.2ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT max("runs".distance) AS max_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_distance (7.0ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT max("runs".avgspeed) AS max_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_avgspeed (2.0ms)
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT count(*) AS count_all FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_run (6.9ms)
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT avg("runs".total_comparison) AS avg_total_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_score (1.3ms)
+Completed in 62ms (View: 37, DB: 3) | 200 OK [http://localhost/]
+
+
+Processing RunsController#index (for 127.0.0.1 at 2010-01-17 22:34:18) [GET]
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mRun Load (0.7ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mGoal Load (0.5ms)[0m   [0;1mSELECT * FROM "goals" WHERE ("goals".user_id = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering runs/index
+Rendered runs/_goal (9.3ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT max("runs".distance) AS max_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_distance (6.8ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT max("runs".avgspeed) AS max_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_avgspeed (1.8ms)
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT count(*) AS count_all FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_run (7.2ms)
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT avg("runs".total_comparison) AS avg_total_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_score (1.2ms)
+Completed in 62ms (View: 37, DB: 3) | 200 OK [http://localhost/]
+
+
+Processing RunsController#index (for 127.0.0.1 at 2010-01-17 22:34:24) [GET]
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mRun Load (0.6ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mGoal Load (0.5ms)[0m   [0mSELECT * FROM "goals" WHERE ("goals".user_id = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering runs/index
+Rendered runs/_goal (9.0ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT max("runs".distance) AS max_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_distance (7.2ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT max("runs".avgspeed) AS max_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_avgspeed (2.2ms)
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSELECT count(*) AS count_all FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_run (8.7ms)
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT avg("runs".total_comparison) AS avg_total_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_score (1.5ms)
+Completed in 66ms (View: 41, DB: 3) | 200 OK [http://localhost/]
+
+
+Processing RunsController#index (for 127.0.0.1 at 2010-01-17 22:34:26) [GET]
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mRun Load (0.7ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mGoal Load (0.6ms)[0m   [0;1mSELECT * FROM "goals" WHERE ("goals".user_id = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering runs/index
+Rendered runs/_goal (9.5ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT max("runs".distance) AS max_distance FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_distance (6.9ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "runs" WHERE ("runs".user_id = 1) ORDER BY created_at DESC[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT max("runs".avgspeed) AS max_avgspeed FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_chart_avgspeed (2.0ms)
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT count(*) AS count_all FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_run (7.6ms)
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT avg("runs".total_comparison) AS avg_total_comparison FROM "runs" WHERE ("runs".user_id = 1) [0m
+Rendered runs/_score (1.2ms)
+Completed in 73ms (View: 38, DB: 3) | 200 OK [http://localhost/]

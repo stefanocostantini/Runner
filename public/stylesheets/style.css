@@ -6,6 +6,7 @@
 body {
 	text-align: center;
 	background-color: rgba(101, 152, 203, 1);
+	font-family: Helvetica, Arial;
 }
 
 #header {
@@ -27,12 +28,19 @@ body {
 	left: 20px;
 }
 
-#stats {
+#score {
+	text-shadow: 4px 4px 4px #000;
 	position: relative;
-	float: right;
-	width: 400px;
-	height: 70px;
-	border: 1px solid #ffffff;
+	float: right;	
+	right: 20px;
+	top: 12px;
+	font-size: 45px;
+	font-weight: bold;
+	color: #ffffff;
+}
+
+#stats {
+	display: none;
 }
 
 #content {

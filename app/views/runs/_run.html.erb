@@ -46,7 +46,12 @@
 	
 	<span class="run_delete">
 	
+	<% if @current_user.runs.size > 1 %>
+	
     <%= link_to_remote 'Delete', :url => { :controller => 'runs', :action => 'delete', :id => run.id } %></td>
+
+	<% else %>
+	<% end %>
 
 	</span>
 </div>
