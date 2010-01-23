@@ -1,4 +1,8 @@
+
+
 <div class="run" id="<%= run.id %>"> 
+
+<span class="run_bar" id="bar_<%= run.id %>" style="width:<%=run.distance.to_int*60%>px;"><%= simple_date(run.updated_at)%></span>
 
 <% @run = run %>
 	

@@ -15,11 +15,14 @@
 </head>
 <body>
 
-<div id="header"><%= image_tag 'runner_logo.png' %>
+<div id="header">
+
+<div id="logo">runner</div>
+<%= image_tag 'runner_shade.png', :id => "shade", :size => '50x60' %>
 
 <% if logged_in? %>
-<div id="score">
-<%= render :partial => 'runs/score'%>
+<div id="login_logout">
+Welcome, <%= @current_user.login.capitalize %> | <%= link_to 'Logout', logout_path %>
 </div>
 <% else %>
 <% end %>

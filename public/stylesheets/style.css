@@ -3,40 +3,63 @@
 	padding: 0;
 }
 
+@font-face {
+	font-family: Nevis;
+	src: url(/fonts/Nevis.ttf) format("truetype");
+}
+
+
 body {
 	text-align: center;
-	background-color: rgba(101, 152, 203, 1);
-	font-family: Helvetica, Arial;
+	background-color: #999999;
+	font-family: Nevis, Helvetica, Arial;
 }
 
 #header {
 	position: fixed;
+	text-align: center
 	top: 0;
 	left: 0;
 	z-index: 2;
 	width: 100%;
 	text-align: left;
 	height: 70px;
-	background-color: rgba(30, 85, 130, 1);
+	background-color: #ff0000;
 	-webkit-box-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4); 
 	-moz-box-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4); 
 }
 
-#header img {
+#header #logo {
 	position: absolute;
-	top: 12px;
+	top: -8px;
 	left: 20px;
+	font-size: 64px;
+	color: #ffffff;
+	text-shadow: 2px 2px 3px black;
+}
+
+#header #shade {
+	position: absolute;
+	top: 5px;
+	left: 215px;
+}
+
+#header #login_logout {
+	text-shadow: 2px 2px 3px black;
+	position: absolute;
+	top: 21px;
+	right: 30px;
+	font-size: 25px;
+	color: #ffffff;
+}
+
+#header #login_logout a {
+	color: #ffffff;
+	text-decoration: none;
 }
 
 #score {
-	text-shadow: 4px 4px 4px #000;
-	position: relative;
-	float: right;	
-	right: 20px;
-	top: 12px;
-	font-size: 45px;
-	font-weight: bold;
-	color: #ffffff;
+	display: none;
 }
 
 #stats {
@@ -45,10 +68,8 @@ body {
 
 #content {
 	position: relative;
-	margin: 0 auto;
 	top: 80px;
-	width: 1024px;
-	
+	width: 100%;
 }
 
 #charts {
@@ -57,6 +78,7 @@ body {
 }
 
 #c_distance {
+	display: none;
 	position: relative;
 	left: 0;
 	width: 500px;
@@ -68,6 +90,7 @@ body {
 }
 
 #c_avgspeed {
+	display: none;
 	position: relative;
 	float: right;
 	top: -326px;
@@ -77,5 +100,39 @@ body {
 	-moz-border-radius: 10px;
 	-webkit-box-shadow: 4px 4px 3px rgba(0, 0, 0, 0.4); 
 	-moz-box-shadow: 4px 4px 3px rgba(0, 0, 0, 0.4); 
+}
 
+#goal {
+	display: none;
+}
+
+#new {
+	position: absolute;
+	top: 600px;
+	border: 1px solid #ffffff;
+	width: 550px;
+	right: 20px;
+}
+
+#runs {
+	position: absolute;
+	border-left: 3px solid #ffffff;
+	width: 550px;
+	min-height: 400px;
+	top: 20px;
+	left: 20px;
+}
+
+.run {
+	
+}
+
+.run_bar {
+	height: 50px;
+	display: block;
+	background-color: #eeeeee;
+	margin-bottom: 10px;
+	margin-left: 5px;
+	-webkit-box-shadow: 4px 4px 3px rgba(0, 0, 0, 0.4); 
+	-moz-box-shadow: 4px 4px 3px rgba(0, 0, 0, 0.4); 	
 }

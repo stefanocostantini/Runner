@@ -22,7 +22,9 @@ def numeric_to_hours(hours)
   return hrs_s
 end
 
-
+def simple_date(time = Time.now)
+	time.strftime("%d.%m.%Y")
+end 
 
 
 end

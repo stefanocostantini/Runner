@@ -7,5 +7,4 @@ page.call 'chart_distance'
 page.replace_html 'c_avgspeed', :partial => 'chart_avgspeed'
 page.call 'chart_avgspeed'
 
-page.replace_html 'stats', :partial => 'stats'
-page.replace_html 'score', :partial => 'score'
+
