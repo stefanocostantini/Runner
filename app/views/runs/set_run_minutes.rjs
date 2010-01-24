@@ -1,10 +1,4 @@
 page.replace_html "#{@run.id}", :partial => 'run', :object => @run
 
-page.replace_html 'c_distance', :partial => 'chart_distance'
-page.call 'chart_distance'
-
-
-page.replace_html 'c_avgspeed', :partial => 'chart_avgspeed'
-page.call 'chart_avgspeed'
 
 

@@ -3,11 +3,6 @@
 </div>
 
 <div id="stats"></div>
-<div id="charts">
-<div id="c_distance"><%= render :partial => 'chart_distance' %></div>
-<div id="c_avgspeed"><%= render :partial => 'chart_avgspeed' %></div>
-</div>
-
 
 <div id="new">
 
@@ -41,7 +36,11 @@
 
 
 <div id="runs">
-<%= render :partial => 'run', :collection => @runs %>
+	<div id="runs_avg_speed">
+	<h2>Distance </h2>
+	<h4>(switch to Average Speed)</h4>
+	<%= render :partial => 'run', :collection => @runs %>
+	</div>
 </div>
 
 

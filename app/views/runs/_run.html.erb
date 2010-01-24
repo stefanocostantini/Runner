@@ -1,61 +1,9 @@
-
-
-<div class="run" id="<%= run.id %>"> 
-
-<span class="run_bar" id="bar_<%= run.id %>" style="width:<%=run.distance.to_int*60%>px;"><%= simple_date(run.updated_at)%></span>
-
 <% @run = run %>
-	
-	<span class="run_distance">
-	
-		<%= in_place_editor_field :run, :distance %> (<%= run.distance_comparison %>%) 
-		
-		&nbsp | &nbsp
-	
-	</span>
-	
-	<span class="run_time">
-	
-		<%= in_place_editor_field :run, :hours %>h &nbsp
-		<%= in_place_editor_field :run, :minutes %>' &nbsp
-		<%= in_place_editor_field :run, :seconds %>''
-		
-		&nbsp | &nbsp
-	
-	</span>
-	
-	<span class="run_avgspeed">
-	
-		<%= run.avgspeed %> km/h (<%= run.avgspeed_comparison%>%)
-		
-		&nbsp | &nbsp
-	
-	</span>
-	
-	<span class="run_performance">
-	
-		Run performance: <%= run.total_comparison %>% 
-		
-		&nbsp | &nbsp
-		
-	</span>
-	
-	<span class="run_note">
-	
-		<%= in_place_editor_field :run, :note %>
-		
-		&nbsp | &nbsp
-	
-	</span>
-	
-	<span class="run_delete">
-	
-	<% if @current_user.runs.size > 1 %>
-	
-    <%= link_to_remote 'Delete', :url => { :controller => 'runs', :action => 'delete', :id => run.id } %></td>
 
-	<% else %>
-	<% end %>
+<div id="<%= @run.id %>">
 
-	</span>
+<span class="run_bar" id="bar_<%= @run.id %>" style="width:<%=@run.distance.to_int*40%>px;"></span>
+
+<span class="run_bar_date" id="bar_date_<%= @run.id %>"><%= simple_date(@run.updated_at)%></span>
+
 </div>

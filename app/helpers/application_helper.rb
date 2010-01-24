@@ -23,7 +23,7 @@ def numeric_to_hours(hours)
 end
 
 def simple_date(time = Time.now)
-	time.strftime("%d.%m.%Y")
+	time.strftime("%d.%m")
 end 
 
 

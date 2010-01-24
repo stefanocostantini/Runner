@@ -5,6 +5,7 @@ in_place_edit_for :run, :hours
 in_place_edit_for :run, :minutes
 in_place_edit_for :run, :seconds
 in_place_edit_for :run, :note
+in_place_edit_for :run, :created_at
 
 before_filter :login_required
 
