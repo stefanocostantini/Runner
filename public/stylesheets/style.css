@@ -15,6 +15,10 @@ body {
 	font-family: Nevis, Helvetica, Arial;
 }
 
+#goal {
+	display: none;
+}
+
 #header {
 	position: fixed;
 	text-align: center
@@ -77,38 +81,10 @@ body {
 	top: 10px;
 }
 
-#c_distance {
-	display: none;
-	position: relative;
-	left: 0;
-	width: 500px;
-	border: 3px solid #ffffff;
-	-webkit-border-radius: 10px;
-	-moz-border-radius: 10px;
-	-webkit-box-shadow: 4px 4px 3px rgba(0, 0, 0, 0.4); 
-	-moz-box-shadow: 4px 4px 3px rgba(0, 0, 0, 0.4); 
-}
-
-#c_avgspeed {
-	display: none;
-	position: relative;
-	float: right;
-	top: -326px;
-	width: 500px;
-	border: 3px solid #ffffff;
-	-webkit-border-radius: 10px;
-	-moz-border-radius: 10px;
-	-webkit-box-shadow: 4px 4px 3px rgba(0, 0, 0, 0.4); 
-	-moz-box-shadow: 4px 4px 3px rgba(0, 0, 0, 0.4); 
-}
-
-#goal {
-	display: none;
-}
-
 #new {
+	display: none;
 	position: absolute;
-	top: 600px;
+	top: 800px;
 	border: 1px solid #eeeeee;
 	width: 550px;
 	right: 20px;
@@ -117,52 +93,140 @@ body {
 #runs {
 	position: absolute;
 	border-left: 3px dotted #333333;
-	width: 550px;
 	min-height: 400px;
-	top: 60px;
+	top: 70px;
 	left: 75px;
 	padding-left: 5px;
 }
 
-#runs h2  {
+#runs_title {
 	position: absolute;
-	top: -45px;
+	text-align: left;
+	width: 240px;
+	top: -50px;
 	left: -55px;
-	display: block;
-	background-color: yellow;
-	text-align: left;	
+	font-size: 18px;
 	padding-left: 3px;
-	padding-right: 15px;
+	background-color: rgb(255, 255, 0);
 	line-height: 30px;
-	
+	-webkit-box-shadow: 4px 4px 3px rgba(0, 0, 0, 0.1); 
+	-moz-box-shadow: 4px 4px 3px rgba(0, 0, 0, 0.1); 
 }
 
-#runs h4  {
+#distance_legend_dot {
 	position: absolute;
-	top: -45px;
-	left: 53px;	
-	background-color: yellow;
-	text-align: left;	
-	padding-left: 3px;
-	padding-right: 3px;
-	line-height: 30px;
-}
-
-.run_bar {
-	height: 50px;
+	top: -43px;
+	left: 220px;
 	display: block;
 	background-color: rgba(24,98,209,1);
-	margin-bottom: 10px;
+	-moz-border-radius: 15px;
+	-webkit-border-radius: 15px;
+	width: 35px;
+	height: 15px;
+	color: rgb(24,98,209);
+	border: 2px #333333 solid;
+}
+
+#avgspeed_legend_dot {
+	position: absolute;
+	top: -43px;
+	left: 350px;
+	display: block;
+	background-color: rgba(70,174,31,1);
+	-moz-border-radius: 15px;
+	-webkit-border-radius: 15px;
+	width: 35px;
+	height: 15px;
+	color: rgb(70,174,31);
+	border: 2px #333333 solid;
+}
+
+#distance_legend_text {
+	position: absolute;
+	top: -42px;
+	left: 270px;
+	width: 200px;
+	background-color: #999;
+	text-align: left;
+}
+
+#avgspeed_legend_text {
+	position: absolute;
+	top: -42px;
+	left: 400px;
+	width: 200px;
+	background-color: #999;
+	text-align: left;
+}
+
+.run_bar_distance {
+	height: 40px;
+	display: block;
+	background-color: rgba(24,98,209,1);
+	margin-top: 12px;
 	margin-left: 5px;
 	-webkit-box-shadow: 4px 4px 3px rgba(0, 0, 0, 0.4); 
 	-moz-box-shadow: 4px 4px 3px rgba(0, 0, 0, 0.4); 	
-	border: 3px #333333 solid;
+	border: 2px #333333 solid;
+	-webkit-border-top-right-radius: 7px;
+	-webkit-border-bottom-right-radius: 7px;
+	-moz-border-radius-topright: 7px;
+	-moz-border-radius-bottomright: 7px; 
+	font-size: 15px;
+	color: white;
+	line-height: 40px;
+	text-align: right;
+	padding-right: 10px;
+}
+
+.run_bar_avgspeed {
+	height: 40px;
+	display: block;
+	background-color: rgba(70,174,31,1);
+	margin-top: -2px;
+	margin-bottom: 12px;
+	margin-left: 5px;
+	-webkit-box-shadow: 4px 4px 3px rgba(0, 0, 0, 0.4); 
+	-moz-box-shadow: 4px 4px 3px rgba(0, 0, 0, 0.4); 	
+	border: 2px #333333 solid;
+	-webkit-border-top-right-radius: 7px;
+	-webkit-border-bottom-right-radius: 7px;
+	-moz-border-radius-topright: 7px;
+	-moz-border-radius-bottomright: 7px; 
+	font-size: 15px;
+	color: white;
+	line-height: 40px;
+	text-align: right;
+	padding-right: 10px;
 }
 
 .run_bar_date {
 	position: relative;
 	float: left;
-	clear: both;
+	clear: left;
 	left: -60px;
-	top: -45px;
+	top: -60px;
+}
+
+.run_bar_details {
+	position: relative;
+	float: right;
+	clear: both;
+	top: -90px;
+	left: 300px;
+	text-align: right;
+	font-size: 14px;
+	padding-right: 5px;
+	border-right: 2px solid #333;
+	width: 250px;
+}
+
+.run_bar_score {
+	position: relative;
+	float: right
+	clear: both;
+	top: -88px;
+	left: 830px;
+	font-size: 48px;
+	
 }

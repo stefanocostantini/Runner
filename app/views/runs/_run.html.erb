@@ -1,9 +1,30 @@
 <% @run = run %>
 
+<span id="runs_title">Distance & Average Speed</span>
+<span id="distance_legend_dot">D</span>
+<span id="distance_legend_text">Distance</span>
+<span id="avgspeed_legend_dot">A</span>
+<span id="avgspeed_legend_text">Average Speed</span>
+
 <div id="<%= @run.id %>">
 
-<span class="run_bar" id="bar_<%= @run.id %>" style="width:<%=@run.distance.to_int*40%>px;"></span>
+
+
+<span class="run_bar_distance" id="bar_<%= @run.id %>" style="width:<%=@run.distance.to_int*50%>px;">
+<%= @run.distance %>km</span>
+<span class="run_bar_avgspeed" id="bar_<%= @run.id %>" style="width:<%=@run.avgspeed.to_int*50%>px;">
+<%= @run.avgspeed %>km/h</span>
+<span class="run_bar_details">
+<p>Distance: <%= in_place_editor_field :run, :distance %> km (<%= @run.distance_comparison %>%)</p>
+<p>Time: <%= in_place_editor_field :run, :hours %>h <%= in_place_editor_field :run, :minutes %>' <%= in_place_editor_field :run, :seconds %>''</p>
+<p>Average Speed: <%= @run.avgspeed %> km/h (<%= @run.avgspeed_comparison %>%)</p>
+<p><%= in_place_editor_field :run, :note %></p>
+</span>
+<span class="run_bar_score"><%= @run.total_comparison %>%</span>
+
 
 <span class="run_bar_date" id="bar_date_<%= @run.id %>"><%= simple_date(@run.updated_at)%></span>
 
+
 </div>
+
