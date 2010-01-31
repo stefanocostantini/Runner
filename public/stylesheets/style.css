@@ -3,16 +3,12 @@
 	padding: 0;
 }
 
-@font-face {
-	font-family: Nevis;
-	src: url(/fonts/Nevis.ttf) format("truetype");
-}
+
 
 
 body {
 	text-align: center;
 	background-color: #999999;
-	font-family: Nevis, Helvetica, Arial;
 }
 
 #goal {
