@@ -19,7 +19,6 @@
 <body>
 
 <div id="header">
-
 <div id="logo">runner</div>
 <%= image_tag 'runner_shade.png', :id => "shade", :size => '50x60' %>
 
@@ -32,11 +31,13 @@ Welcome, <%= @current_user.login.capitalize %> | <%= link_to 'Logout', logout_pa
 </div>
 
 <div id="content">
+
 <%= yield %>
+
 </div>
+
 
 <div id="footer">
 </div>
-
 </body>
 </html>

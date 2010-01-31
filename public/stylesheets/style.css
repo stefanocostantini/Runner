@@ -8,6 +8,15 @@ body {
 	background-color: #999999;
 }
 
+#content {
+	position: relative;
+	top:70px;
+	width: 1024px;
+	margin: 0 auto;
+	min-height: 1000px;
+	background-color: rgba(110,110,110,0.7);
+}
+
 #goal {
 	display: none;
 }
@@ -17,13 +26,13 @@ body {
 	text-align: center
 	top: 0;
 	left: 0;
-	z-index: 2;
 	width: 100%;
 	text-align: left;
 	height: 70px;
 	background-color: #ff0000;
 	-webkit-box-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4); 
 	-moz-box-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4); 
+	z-index: 100;
 }
 
 #header #logo {
@@ -66,19 +75,7 @@ body {
 	display: none;
 }
 
-#content {
-	position: relative;
-	top: 80px;
-	width: 100%;
-}
-
-#charts {
-	position: relative;
-	top: 10px;
-}
-
-#new {
-	
+#new {	
 	position: absolute;
 	top: 800px;
 	border: 1px solid #eeeeee;
@@ -86,8 +83,71 @@ body {
 	right: 20px;
 }
 
+#runs_heading {
+	position: relative;
+	text-align: left;
+	top: 40px;
+	left: 15px;
+	font-size: 17pt;
+}
+
+#runs_heading #runs_title {
+	background-color: rgb(229,227,56);
+	display: block;
+	padding-left: 7px;
+	width: 265px;
+		-webkit-box-shadow: 3px 4px 3px rgba(0, 0, 0, 0.4); 
+	-moz-box-shadow: 3px 4px 3px rgba(0, 0, 0, 0.4); 
+}
+
+#runs_heading #distance_legend_dot {
+	position: relative;
+	top: 15px;
+	display: block;
+	background-color: rgb(0, 147, 42);
+	color: rgb(0,147,42);
+	width: 25px;
+	height: 15px;
+	text-align: center;
+	font-size: 10pt;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border: 1px solid #ffffff;
+}
+
+#runs_heading #distance_legend_text {
+	position: relative;
+	top: -3px;
+	left: 33px;
+	font-size: 12pt;
+}
+
+#runs_heading #avgspeed_legend_dot {
+	position: relative;
+	top: -21px;
+	left: 110px;
+	display: block;
+	background-color: rgb(32, 224, 86);
+	color: rgb(32, 224, 86);
+	width: 25px;
+	height: 15px;
+	text-align: center;
+	font-size: 10pt;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border: 1px solid #ffffff;
+}
+
+#runs_heading #avgspeed_legend_text {
+	position: relative;
+	top: -39px;
+	left: 145px;
+	font-size: 12pt;
+}
+
 #runs {
-	border: 1px solid white;
+	position: relative;
+	top: 15px;
 	padding-top: 10px;
 	padding-bottom: 10px;
 }
@@ -95,9 +155,9 @@ body {
 .run {
 	margin-left: 10px;
 	margin-right: 10px;
-	height: 80px;
+	height: 90px;
 	font-size: 13px;
-	border: 1px solid white;
+	
 }
 
 #run_bar_axis {
@@ -107,14 +167,14 @@ body {
 	height: inherit;
 	border-right: 3px solid #333333;
 	font-size: 17px;
-	line-height: 80px;
+	line-height: 90px;
 }
 
 #run_bar_distance {
 	position: absolute;
 	display: block;
-	left: 55px;
-	margin-top: 5px;
+	left: 53px;
+	margin-top: 10px;
 	height: 30px;
 	font-size: 17px;
 	line-height: 30px;
@@ -136,8 +196,8 @@ body {
 #run_bar_avgspeed {
 	position: absolute;
 	display: block;
-	left: 55px;
-	margin-top: 42px;
+	left: 53px;
+	margin-top: 47px;
 	height: 30px;
 	font-size: 17px;
 	line-height: 30px;
@@ -152,6 +212,7 @@ body {
 	-moz-border-radius-bottomright: 5px;
 	-moz-border-radius-topright: 5px;
 	-webkit-box-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4); 
+	
 	-moz-box-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4); 
 	z-index: 10;
 }
@@ -160,13 +221,35 @@ body {
 	position: relative;
 	display: block;
 	left: 550px;
-	width: 200px;
+	width: 430px;
 	height: 70px;
+	top: 7px;
 	text-align: left;
 	padding-left: 5px;
-	padding-top: 10px;
-	border-left: 2px solid #333333;
+	padding-top: 7px;
 	background-color: rgba(35,35,35,0.3);
 	color: #dddddd;
+	-webkit-border-radius: 4px;
+	font-size: 10pt;
+}
+
+#run_bar_score {
+	position: relative;
+	display: block;
+	color: #dddddd;
+	font-size: 45pt;
+	top: -68px;
+	left: 720px;
+	width: 210px;
+	text-align: right;
+}
+
+#run_bar_delete {
+	position: relative;
+	display: block;
+	top: -117px;
+	left: 940px;
+	width: 30px;
+	
 }
 

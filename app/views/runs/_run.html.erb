@@ -17,6 +17,6 @@
 
 <span id="run_bar_score"><%= @run.total_comparison %>%</span>
 
-<span id="run_bar_delete"><%= link_to_remote 'Delete', :url => {:controller => 'runs', :action => 'delete', :id => @run.id} %></span>
+<span id="run_bar_delete"><%= link_to_remote image_tag('trash.png', :border => 'none', :size => '25x25'), :url => {:controller => 'runs', :action => 'delete', :id => @run.id} %></span>
 
 </div>
