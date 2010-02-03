@@ -5,7 +5,8 @@
 
 body {
 	text-align: center;
-	background-color: #999999;
+	background-color: #aaaaaa;
+	font-family: Helvetica, Arial, sans-serif;
 }
 
 #content {
@@ -14,7 +15,7 @@ body {
 	width: 1024px;
 	margin: 0 auto;
 	min-height: 1000px;
-	background-color: rgba(110,110,110,0.7);
+	background-color: #999999;
 }
 
 #goal {
@@ -47,15 +48,15 @@ body {
 #header #shade {
 	position: absolute;
 	top: 5px;
-	left: 200px;
+	left: 210px;
 }
 
 #header #login_logout {
-	text-shadow: 2px 2px 2px black;
+	text-shadow: 2px 2px 2px #222222;
 	position: absolute;
 	top: 21px;
 	right: 30px;
-	font-size: 25px;
+	font-size: 20px;
 	color: #ffffff;
 }
 
@@ -95,14 +96,15 @@ body {
 	background-color: rgb(229,227,56);
 	display: block;
 	padding-left: 7px;
-	width: 265px;
+	width: 290px;
+	line-height: 30px;
 		-webkit-box-shadow: 3px 4px 3px rgba(0, 0, 0, 0.4); 
 	-moz-box-shadow: 3px 4px 3px rgba(0, 0, 0, 0.4); 
 }
 
 #runs_heading #distance_legend_dot {
 	position: relative;
-	top: 15px;
+	top: 14px;
 	display: block;
 	background-color: rgb(0, 147, 42);
 	color: rgb(0,147,42);
@@ -140,7 +142,7 @@ body {
 
 #runs_heading #avgspeed_legend_text {
 	position: relative;
-	top: -39px;
+	top: -38px;
 	left: 145px;
 	font-size: 12pt;
 }
@@ -166,7 +168,7 @@ body {
 	width: 40px;
 	height: inherit;
 	border-right: 3px solid #333333;
-	font-size: 17px;
+	font-size: 14px;
 	line-height: 90px;
 }
 
@@ -180,7 +182,7 @@ body {
 	line-height: 30px;
 	background-color: rgb(0, 147, 42);
 	text-align: right;
-	padding-right: 5px;
+	padding-right: 10px;
 	border-top: 2px solid #ffffff;
 	border-bottom: 2px solid #ffffff;
 	border-right: 2px solid #ffffff;
@@ -203,7 +205,7 @@ body {
 	line-height: 30px;
 	background-color: rgb(32, 224, 86);
 	text-align: right;
-	padding-right: 5px;
+	padding-right: 10px;
 	border-top: 2px solid #ffffff;
 	border-bottom: 2px solid #ffffff;
 	border-right: 2px solid #ffffff;
@@ -237,9 +239,9 @@ body {
 	position: relative;
 	display: block;
 	color: #dddddd;
-	font-size: 45pt;
-	top: -68px;
-	left: 720px;
+	font-size: 40pt;
+	top: -63px;
+	left: 730px;
 	width: 210px;
 	text-align: right;
 }
@@ -247,8 +249,8 @@ body {
 #run_bar_delete {
 	position: relative;
 	display: block;
-	top: -117px;
-	left: 940px;
+	top: -105px;
+	left: 945px;
 	width: 30px;
 	
 }
