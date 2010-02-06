@@ -1,5 +1,7 @@
 page.replace_html 'runs', :partial => 'run', :collection => @runs
 
+page.replace_html 'stats', :partial => 'stats'
+
 page["run_distance"].value = 0
 page["run_hours"].value = 0
 page["run_minutes"].value = 0

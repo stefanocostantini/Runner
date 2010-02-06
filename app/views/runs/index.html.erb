@@ -1,36 +1,44 @@
-<div id="goal">
-<%= render :partial => 'goal', :object => @goal %>
-</div>
 
-<div id="stats"></div>
+<div id="new_and_goal_bar">
 
 <div id="new">
 
-	<% remote_form_for(:run, :url => {:controller => 'runs', :action => 'create'}, :html => {:id => 'new_form'}) do |f| %>
+<span id="new_title">New run</span>
+
+	<% remote_form_for(:run, :url => {:controller => 'runs', :action => 'create'}, :html => {:id => 'new_form'}, :loading => "Element.hide('spinner_fix')", :wait => '1.0', :complete => "Element.show('spinner_fix')") do |f| %>
 
   <%= f.error_messages %>
 
   <p>
-    <%= f.label :distance %><br />
-    <%= f.text_field :distance, :value => '0' %>
+    <%= f.text_field :distance, :value => '0.0' %> <span id="distance_unit">km</span>
   </p>
   <p>
-    <%= f.label :hours %><br />
-    <%= f.text_field :hours, :value => '0' %>
+    <%= f.text_field :hours, :value => '0' %> <span id="hours_unit">h</span>
   </p>
   <p>
-    <%= f.label :minutes %><br />
-    <%= f.text_field :minutes, :value => '0' %>
+    <%= f.text_field :minutes, :value => '0' %> <span id="minutes_unit">'</span>
   </p>
   <p>
-    <%= f.label :seconds %><br />
-    <%= f.text_field :seconds, :value => '0' %>
+    <%= f.text_field :seconds, :value => '0' %> <span id="seconds_unit">''</span>
   </p>
   <p>
-    <%= f.submit 'Create' %>
+    <%= f.submit 'OK' %>
   </p>
   
 <% end %>
+</div>
+</div>
+
+<div id="goal_box">
+<span id="goal_title">Set your goal</span>
+<div id="goal">
+<%= render :partial => 'goal', :object => @goal %>
+</div>
+
+</div>
+
+<div id="stats">
+	<%= render :partial => 'stats' %>
 </div>
 
 <div id="runs_heading">
@@ -44,7 +52,6 @@
 <div id="runs">
 	<%= render :partial => 'run', :collection => @runs %>
 </div>
-
 
 
 

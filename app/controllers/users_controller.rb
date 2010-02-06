@@ -34,7 +34,7 @@ class UsersController < ApplicationController
     		@run.hours = 0
     		@run.minutes = 40
     		@run.seconds = 0
-    		@run.note = 'This is a sample entry, you can edit it by clicking on the all fields'
+    		@run.note = 'Click to enter notes here'
     		@run.duration = @run.hours*3600 + @run.minutes*60 + @run.seconds 
     		@run.avgspeed = ((@run.distance/@run.duration)*3600).round(1)
     		

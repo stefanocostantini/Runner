@@ -1,3 +1,5 @@
 page.replace_html 'runs', :partial => '/runs/run', :collection => current_user.runs.all(:order => 'created_at DESC') 
 
+page.replace_html 'stats', :partial => 'stats'
+
 

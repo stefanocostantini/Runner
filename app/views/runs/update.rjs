@@ -1,0 +1,2 @@
+page.replace_html 'runs', :partial => 'run', :collection => @runs
+page.replace_html 'stats', :partial => 'stats'

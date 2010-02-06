@@ -1,26 +1,17 @@
-	<span class="@goal_distance">
+<span id="goal_distance">
+	<%= in_place_editor_field :goal, :distance, {}, :saving_text => '' %> <span id="goal_distance_unit">km</span>			
+</span>
 	
-		<%= in_place_editor_field :goal, :distance %>
-				
-		&nbsp | &nbsp
-	
-	</span>
-	
-	<span class="@goal_time">
-	
-		<%= in_place_editor_field :goal, :hours %>h &nbsp
-		<%= in_place_editor_field :goal, :minutes %>' &nbsp
-		<%= in_place_editor_field :goal, :seconds %>''
-		
-		&nbsp | &nbsp
-	
-	</span>
-	
-	<span class="@goal_avgspeed">
-	
-		<%= @goal.avgspeed %> km/h
-				
-		&nbsp | &nbsp
-	
-	</span>
+<span id="goal_hours">
+	<%= in_place_editor_field :goal, :hours,  {}, :saving_text => '' %> <span id="goal_hours_unit">h</span>
+</span>
+
+<span id="goal_minutes">
+	<%= in_place_editor_field :goal, :minutes,  {}, :saving_text => '' %> <span id="goal_minutes_unit">'</span>
+</span>
+
+<span id="goal_seconds">
+	<%= in_place_editor_field :goal, :seconds,  {}, :saving_text => '' %> <span id="goal_seconds_unit">''</span>
+</span>
+
 

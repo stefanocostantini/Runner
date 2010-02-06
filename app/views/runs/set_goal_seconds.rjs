@@ -1,3 +1,4 @@
 page.replace_html 'goal', :partial => 'goal', :object => @goal
 page.replace_html 'runs', :partial => 'run', :collection => @runs
+page.replace_html 'stats', :partial => 'stats'
 

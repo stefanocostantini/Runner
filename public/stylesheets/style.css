@@ -7,6 +7,7 @@ body {
 	text-align: center;
 	background-color: #aaaaaa;
 	font-family: Helvetica, Arial, sans-serif;
+		
 }
 
 #content {
@@ -14,12 +15,9 @@ body {
 	top:70px;
 	width: 1024px;
 	margin: 0 auto;
+	padding-bottom: 100px;
 	min-height: 1000px;
 	background-color: #999999;
-}
-
-#goal {
-	display: none;
 }
 
 #header {
@@ -34,11 +32,14 @@ body {
 	-webkit-box-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4); 
 	-moz-box-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4); 
 	z-index: 100;
+	font-family: Helvetica;
 }
 
 #header #logo {
 	position: absolute;
-	top: -8px;
+	height: 70px;
+	top: -1px;
+	line-height: 64px;
 	left: 20px;
 	font-size: 64px;
 	color: #ffffff;
@@ -48,7 +49,23 @@ body {
 #header #shade {
 	position: absolute;
 	top: 5px;
-	left: 210px;
+	left: 190px;
+}
+
+#header #spinner {
+	position: absolute;
+	top: 18px;
+	left: 235px;	
+}
+
+#header #spinner_fix {
+	position: absolute;
+	display: block;
+	background-color: #ff0000;
+	width: 35px;
+	height: 35px;
+	top: 18px;
+	left: 235px;
 }
 
 #header #login_logout {
@@ -65,29 +82,10 @@ body {
 	text-decoration: none;
 }
 
-#footer {
-}
-
-#score {
-	display: none;
-}
-
-#stats {
-	display: none;
-}
-
-#new {	
-	position: absolute;
-	top: 800px;
-	border: 1px solid #eeeeee;
-	width: 550px;
-	right: 20px;
-}
-
 #runs_heading {
 	position: relative;
 	text-align: left;
-	top: 40px;
+	top: 60px;
 	left: 15px;
 	font-size: 17pt;
 }
@@ -98,7 +96,7 @@ body {
 	padding-left: 7px;
 	width: 290px;
 	line-height: 30px;
-		-webkit-box-shadow: 3px 4px 3px rgba(0, 0, 0, 0.4); 
+	-webkit-box-shadow: 3px 4px 3px rgba(0, 0, 0, 0.4); 
 	-moz-box-shadow: 3px 4px 3px rgba(0, 0, 0, 0.4); 
 }
 
@@ -114,19 +112,21 @@ body {
 	font-size: 10pt;
 	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px;
-	border: 1px solid #ffffff;
+	border: 2px solid #ffffff;
+	-webkit-box-shadow: 3px 4px 3px rgba(0, 0, 0, 0.4); 
+	-moz-box-shadow: 3px 4px 3px rgba(0, 0, 0, 0.4); 
 }
 
 #runs_heading #distance_legend_text {
 	position: relative;
 	top: -3px;
-	left: 33px;
+	left: 38px;
 	font-size: 12pt;
 }
 
 #runs_heading #avgspeed_legend_dot {
 	position: relative;
-	top: -21px;
+	top: -23px;
 	left: 110px;
 	display: block;
 	background-color: rgb(32, 224, 86);
@@ -137,19 +137,21 @@ body {
 	font-size: 10pt;
 	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px;
-	border: 1px solid #ffffff;
+	border: 2px solid #ffffff;
+	-webkit-box-shadow: 3px 4px 3px rgba(0, 0, 0, 0.4); 
+	-moz-box-shadow: 3px 4px 3px rgba(0, 0, 0, 0.4); 
 }
 
 #runs_heading #avgspeed_legend_text {
 	position: relative;
-	top: -38px;
-	left: 145px;
+	top: -40px;
+	left: 150px;
 	font-size: 12pt;
 }
 
 #runs {
 	position: relative;
-	top: 15px;
+	top: 55px;
 	padding-top: 10px;
 	padding-bottom: 10px;
 }
@@ -170,6 +172,7 @@ body {
 	border-right: 3px solid #333333;
 	font-size: 14px;
 	line-height: 90px;
+	text-align: left;
 }
 
 #run_bar_distance {
@@ -190,8 +193,8 @@ body {
 	-webkit-border-top-right-radius: 5px;
 	-moz-border-radius-bottomright: 5px;
 	-moz-border-radius-topright: 5px;
-	-webkit-box-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4); 
-	-moz-box-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4); 
+	-webkit-box-shadow: 4px 4px 3px rgba(0, 0, 0, 0.4); 
+	-moz-box-shadow: 4px 4px 3px rgba(0, 0, 0, 0.4); 
 	z-index: 10;
 }
 
@@ -213,9 +216,8 @@ body {
 	-webkit-border-top-right-radius: 5px;
 	-moz-border-radius-bottomright: 5px;
 	-moz-border-radius-topright: 5px;
-	-webkit-box-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4); 
-	
-	-moz-box-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4); 
+	-webkit-box-shadow: 4px 4px 3px rgba(0, 0, 0, 0.4); 
+	-moz-box-shadow: 4px 4px 3px rgba(0, 0, 0, 0.4); 
 	z-index: 10;
 }
 
@@ -225,33 +227,483 @@ body {
 	left: 550px;
 	width: 430px;
 	height: 70px;
-	top: 7px;
+	top: 8px;
 	text-align: left;
-	padding-left: 5px;
-	padding-top: 7px;
+	padding-left: 8px;
+	padding-top: 8px;
 	background-color: rgba(35,35,35,0.3);
 	color: #dddddd;
 	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
 	font-size: 10pt;
+	-webkit-box-shadow: 4px 4px 3px rgba(0, 0, 0, 0.4); 
+	-moz-box-shadow: 4px 4px 3px rgba(0, 0, 0, 0.4); 
 }
 
-#run_bar_score {
-	position: relative;
+#run_bar_details form a {
+	color: #333333;
+	padding-left: 5px;
+	border: none;
+}
+
+.editor_ok_button {
+	display: none;
+}
+
+#run_bar_details #run_bar_score {
+	position: absolute;
 	display: block;
 	color: #dddddd;
-	font-size: 40pt;
-	top: -63px;
-	left: 730px;
+	font-size: 35pt;
+	font-weight: bold;
+	top: 12px;
+	left: 210px;
 	width: 210px;
 	text-align: right;
 }
 
-#run_bar_delete {
-	position: relative;
+#run_bar_details #run_bar_delete {
+	position: absolute;
 	display: block;
-	top: -105px;
-	left: 945px;
+	top: -8px;
+	left: 425px;
 	width: 30px;
-	
+}
+
+#new_and_goal_bar {
+	position: relative;
+	background-color: rgba(35,35,35,0.3);
+	display: block;
+	height: 110px;
+	width: 100%;
+	top: 20px;
+}
+
+#new {
+	position: absolute;
+}
+
+#new #new_title {
+	position: relative;
+	font-size: 17pt;
+	text-align: left;
+	left: 15px;
+	top: 10px;
+	background-color: rgb(229,227,56);
+	display: block;
+	padding-left: 7px;
+	width: 95px;
+	line-height: 30px;
+	-webkit-box-shadow: 3px 4px 3px rgba(0, 0, 0, 0.4); 
+	-moz-box-shadow: 3px 4px 3px rgba(0, 0, 0, 0.4); 
+}
+
+#new #run_distance {
+	position: absolute;
+	top: 52px;
+	left: 15px;
+	width: 80px;
+	height: 40px;
+	font-size: 35px;
+	font-weight: bold;
+	text-align: center;
+	color: #ffffff;
+	border: none;
+	background-color: #999999;
+	-webkit-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.4); 
+	-moz-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.4); 
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	font-family: Helvetica, Arial;
+}
+
+#distance_unit {
+	position: absolute;
+	font-size: 35px;
+	top: 56px;
+	left: 100px;
+	width: 90px;
+	font-weight: bold;
+	color: #dddddd;
+	text-align: left;
+}
+
+#new #run_hours {
+	position: absolute;
+	top: 52px;
+	left: 160px;
+	width: 35px;
+	height: 40px;
+	font-size: 35px;
+	font-weight: bold;
+	text-align: center;
+	color: #ffffff;
+	border: none;
+	background-color: #999999;
+	-webkit-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.4); 
+	-moz-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.4); 
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	font-family: Helvetica, Arial;
+}
+
+#hours_unit {
+	position: absolute;
+	font-size: 35px;
+	top: 56px;
+	left: 200px;
+	width: 90px;
+	font-weight: bold;
+	color: #dddddd;
+	text-align: left;
+}
+
+#new #run_minutes {
+	position: absolute;
+	top: 52px;
+	left: 227px;
+	width: 55px;
+	height: 40px;
+	font-size: 35px;
+	font-weight: bold;
+	text-align: center;
+	color: #ffffff;
+	border: none;
+	background-color: #999999;
+	-webkit-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.4); 
+	-moz-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.4);
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px; 
+	font-family: Helvetica, Arial;
+}
+
+#minutes_unit {
+	position: absolute;
+	font-size: 35px;
+	top: 56px;
+	left: 286px;
+	width: 90px;
+	font-weight: bold;
+	color: #dddddd;
+	text-align: left;
+}
+
+#new #run_seconds {
+	position: absolute;
+	top: 52px;
+	left: 300px;
+	width: 50px;
+	height: 40px;
+	font-size: 35px;
+	font-weight: bold;
+	text-align: center;
+	color: #ffffff;
+	border: none;
+	background-color: #999999;
+	-webkit-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.4); 
+	-moz-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.4); 
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	font-family: Helvetica, Arial;
+}
+
+#seconds_unit {
+	position: absolute;
+	font-size: 35px;
+	top: 56px;
+	left: 354px;
+	width: 90px;
+	font-weight: bold;
+	color: #dddddd;
+	text-align: left;
+}
+
+#new #run_submit {
+	position: absolute;
+	top: 54px;
+	height: 37px;
+	left: 380px;
+	border: none;
+	width: 50px;
+	font-size: 20px;
+	color: #333333;
+	-webkit-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.4); 
+	-moz-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.4); 
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+}
+
+#new #run_submit:active {
+	background-color: #444444;
+	color: #bbbbbb;
+}
+
+#goal_box {
+	position: absolute;
+	left: 560px;
+	height: 110px;
+	width: 430px;
+	top: 20px;
+}
+
+#goal_box #goal_title {
+	position: relative;
+	font-size: 17pt;
+	text-align: left;
+	left: 0px;
+	top: 10px;
+	background-color: rgb(229,227,56);
+	display: block;
+	padding-left: 7px;
+	width: 145px;
+	line-height: 30px;
+	-webkit-box-shadow: 3px 4px 3px rgba(0, 0, 0, 0.4); 
+	-moz-box-shadow: 3px 4px 3px rgba(0, 0, 0, 0.4); 
+}
+
+#goal .in_place_editor_field {
+	position: relative;
+	top: 0px;
+}
+
+#goal #goal_distance {
+	position: absolute;
+	top: 52px;
+	left: 0px;
+	width: 80px;
+	height: 40px;
+	line-height: 40px;	
+	padding-bottom: -2px;
+	font-size: 35px;
+	font-weight: bold;
+	text-align: center;
+	color: #ffffff;
+	border: none;
+	background-color: #999999;
+	-webkit-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.4); 
+	-moz-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.4); 
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+}
+
+#goal #goal_distance form input {
+	width: 55px;
+	font-size: 25px;
+	height: 35px;
+	line-height: 35px;
+	text-align: center;
+}
+
+#goal #goal_distance form a {
+	position: absolute;
+	left: 380px;
+	color: #444444;
+	font-size: 13pt;
+	z-index: 50;
+}
+
+#goal_distance_unit {
+	position: absolute;
+	font-size: 35px;
+	top: 3px;
+	left: 85px;
+	width: 90px;
+	font-weight: bold;
+	color: #dddddd;
+	text-align: left;
+}
+
+#goal #goal_hours {
+	position: absolute;
+	top: 52px;
+	left: 145px;
+	width: 35px;
+	height: 40px;
+	line-height: 40px;	
+	padding-bottom: -2px;
+	font-size: 35px;
+	font-weight: bold;
+	text-align: center;
+	color: #ffffff;
+	border: none;
+	background-color: #999999;
+	-webkit-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.4); 
+	-moz-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.4); 
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+}
+
+#goal #goal_hours form input {
+	width: 25px;
+	font-size: 25px;
+	height: 35px;
+	line-height: 35px;
+	text-align: center;
+}
+
+#goal #goal_hours form a {
+	position: absolute;
+	left: 235px;
+	color: #444444;
+	font-size: 13pt;
+	z-index: 50;
+}
+
+#goal_hours_unit {
+	position: absolute;
+	font-size: 35px;
+	top: 3px;
+	left: 40px;
+	width: 90px;
+	font-weight: bold;
+	color: #dddddd;
+	text-align: left;
+}
+
+#goal #goal_minutes {
+	position: absolute;
+	top: 52px;
+	left: 213px;
+	width: 50px;
+	height: 40px;
+	line-height: 40px;	
+	padding-bottom: -2px;
+	font-size: 35px;
+	font-weight: bold;
+	text-align: center;
+	color: #ffffff;
+	border: none;
+	background-color: #999999;
+	-webkit-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.4); 
+	-moz-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.4); 
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+}
+
+#goal #goal_minutes form input {
+	width: 35px;
+	font-size: 25px;
+	height: 35px;
+	line-height: 35px;
+}
+
+#goal #goal_minutes form a {
+	position: absolute;
+	left: 167px;
+	color: #444444;
+	font-size: 13pt;
+	z-index: 50;
+}
+
+#goal_minutes_unit {
+	position: absolute;
+	font-size: 35px;
+	top: 3px;
+	left: 55px;
+	width: 90px;
+	font-weight: bold;
+	color: #dddddd;
+	text-align: left;
+}
+
+#goal #goal_seconds {
+	position: absolute;
+	top: 52px;
+	left: 282px;
+	width: 50px;
+	height: 40px;
+	line-height: 40px;	
+	padding-bottom: -2px;
+	font-size: 35px;
+	font-weight: bold;
+	text-align: center;
+	color: #ffffff;
+	border: none;
+	background-color: #999999;
+	-webkit-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.4); 
+	-moz-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.4); 
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+}
+
+#goal #goal_seconds form input {
+	width: 35px;
+	font-size: 25px;
+	height: 35px;
+	line-height: 35px;
+}
+
+#goal #goal_seconds form a {
+	position: absolute;
+	left: 98px;
+	color: #444444;
+	font-size: 13pt;
+	z-index: 50;
+}
+
+#goal_seconds_unit {
+	position: absolute;
+	font-size: 35px;
+	top: 3px;
+	left: 55px;
+	width: 90px;
+	font-weight: bold;
+	color: #dddddd;
+	text-align: left;
+}
+
+#stats {
+	position: absolute;
+	top: 170px;
+	left: 560px;
+	width: 435px;
+	height: 70px;
+	border: 2px solid white;
+	color: #eeeeee;
+	background-color: rgba(7,105,195,0.8);		
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	-webkit-box-shadow: 4px 4px 3px rgba(0, 0, 0, 0.4); 
+	-moz-box-shadow: 4px 4px 3px rgba(0, 0, 0, 0.4); 
+}
+
+#stats #average_speed {
+	position: absolute;
+	top: 37px;
+	left: 10px;
+	width: 250px;
+	text-align: left;
+	font-size: 13pt;
+}
+
+#stats #average_distance {
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	width: 250px;
+	text-align: left;
+	font-size: 13pt;
+}
+
+#stats #overall_performance {
+	position: absolute;
+	top: 8px;
+	right: 15px;
+	width: 150px;
+	text-align: left;
+	font-size: 35pt;
+	font-weight: bold;
+	text-align: right;
+}
+
+
+#footer {
+	display: none;
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	height: 20px;
+	background-color: rgba(20,20,20,.8);
+	z-index: 100;
 }
 

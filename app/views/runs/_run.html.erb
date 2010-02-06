@@ -3,20 +3,21 @@
 <div class="run">
 
 <span id="run_bar_axis"><%= simple_date(@run.created_at)%></span>
-<span id="run_bar_distance" style="width:<%=(@run.distance.to_int / current_user.runs.maximum('avgspeed'))*450%>px;">
-<%= @run.distance %>km</span>
+<span id="run_bar_distance" style="width:<%=(@run.distance.to_int / current_user.runs.maximum('distance'))*450%>px;">
+<%= @run.distance %> km</span>
 <span id="run_bar_avgspeed" style="width:<%=(@run.avgspeed.to_int / current_user.runs.maximum('avgspeed'))*450%>px;">
-<%= @run.avgspeed %>km/h</span>
+<%= @run.avgspeed %> km/h</span>
 
 <span id="run_bar_details">
-<p>Distance: <%= in_place_editor_field :run, :distance %> km (<%= @run.distance_comparison %>%)</p>
-<p>Time: <%= in_place_editor_field :run, :hours %>h <%= in_place_editor_field :run, :minutes %>' <%= in_place_editor_field :run, :seconds %>''</p>
+<p>Distance: <%= @run.distance %> km (<%= @run.distance_comparison %>%)</p>
+<p>Time: <%= @run.hours %>h <%= @run.minutes %>' <%= @run.seconds %>''</p>
 <p>Average Speed: <%= @run.avgspeed %> km/h (<%= @run.avgspeed_comparison %>%)</p>
 <p><%= in_place_editor_field :run, :note %></p>
-</span>
 
 <span id="run_bar_score"><%= @run.total_comparison %>%</span>
 
-<span id="run_bar_delete"><%= link_to_remote image_tag('trash.png', :border => 'none', :size => '25x25'), :url => {:controller => 'runs', :action => 'delete', :id => @run.id} %></span>
+<span id="run_bar_delete"><%= link_to_remote image_tag('closebox.png', :border => 'none', :size => '25x25'), :url => {:controller => 'runs', :action => 'delete', :id => @run.id}, :loading => "Element.hide('spinner_fix')", :wait => '1.0', :complete => "Element.show('spinner_fix')" %></span>
+
+</span>
 
 </div>

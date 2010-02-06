@@ -55,7 +55,7 @@ before_filter :login_required
     @goal = current_user.goals.first
     @run.duration = @run.hours*3600 + @run.minutes*60 + @run.seconds 
     @run.avgspeed = ((@run.distance/@run.duration)*3600).round(1)
-    @run.note = 'Enter notes here'
+    @run.note = 'Click to enter a short note here'
     
    
     @run.distance_comparison = (((@run.distance-@goal.distance)/@goal.distance)*100).round(1)
@@ -93,17 +93,20 @@ before_filter :login_required
     #@run.duration_comparison = (((@run.duration-@goal.duration)/@goal.duration)*100).round(1)
     @run.avgspeed_comparison = (((@run.avgspeed-@goal.avgspeed)/@goal.avgspeed)*100).round(1)
     @run.total_comparison = ((@run.distance_comparison+@run.avgspeed_comparison)/2).round(1)
+    
+   	@run.save 
+	@runs = current_user.runs.all(:order => 'created_at DESC') 
 
-    respond_to do |format|
-      if @run.save
-        flash[:notice] = 'Run was successfully updated.'
-        format.html { redirect_to(@run) }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @run.errors, :status => :unprocessable_entity }
-      end
-    end
+    #respond_to do |format|
+     # if @run.save
+      #  flash[:notice] = 'Run was successfully updated.'
+       # format.html { redirect_to(@run) }
+       # format.xml  { head :ok }
+     # else
+      #  format.html { render :action => "edit" }
+       # format.xml  { render :xml => @run.errors, :status => :unprocessable_entity }
+     # end
+    # end
   end
 
   # DELETE /runs/1

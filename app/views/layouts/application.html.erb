@@ -19,9 +19,14 @@
 <body>
 
 <div id="header">
-<div id="logo">runner</div>
-<%= image_tag 'runner_shade.png', :id => "shade", :size => '50x60' %>
-
+<div id="logo">runner
+<%= image_tag 'runner_shade.png', :id => "shade", :size => '45x55' %>
+<div id="spinner">
+<%= image_tag 'ajax-loader.gif', :size => '35x35' %>
+</div>
+<div id="spinner_fix">
+</div>
+</div>
 <% if logged_in? %>
 <div id="login_logout">
 Welcome, <%= @current_user.login.capitalize %> | <%= link_to 'Logout', logout_path %>
